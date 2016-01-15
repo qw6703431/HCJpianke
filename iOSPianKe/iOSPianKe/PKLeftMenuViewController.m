@@ -10,6 +10,7 @@
 #import "PKLeftHeadView.h" // 头部view
 #import "PKLeftTableView.h" // 中间cell
 #import "PKLeftDownView.h" // 底部view
+#import "PKLandingViewController.h" // 登陆界面
 
 @interface PKLeftMenuViewController ()
 
@@ -54,26 +55,35 @@
     
     // Do any additional setup after loading the view.
 }
-
+// 头部view
 - (PKLeftHeadView*)leftheadView {
     if (!_leftheadView) {
         _leftheadView = [[PKLeftHeadView alloc] init];
+        // 添加事件，跳转到登陆界面
+        [_leftheadView.iconImageBtn addTarget:self action:@selector(pushToLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
+        [_leftheadView.userNameBtn addTarget:self action:@selector(pushToLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _leftheadView;
 }
-
+// 中间cell
 - (PKLeftTableView*)leftTableView {
     if (!_leftTableView) {
         _leftTableView = [[PKLeftTableView alloc] init];
     }
     return _leftTableView;
 }
-
+// 底部view
 - (PKLeftDownView*)leftdownView {
     if (!_leftdownView) {
         _leftdownView = [[PKLeftDownView alloc] init];
     }
     return _leftdownView;
+}
+
+- (void)pushToLandingViewController {
+    PKLandingViewController* landing = [[PKLandingViewController alloc] init];
+    // 模态化视图跳转->登陆界面
+    [self presentViewController:landing animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

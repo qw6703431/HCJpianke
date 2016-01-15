@@ -16,6 +16,10 @@
 		04FC33931C47C4A000DC42C4 /* LeftViewCellPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04FC33921C47C49F00DC42C4 /* LeftViewCellPlist.plist */; };
 		04FC339A1C47C7B400DC42C4 /* PKLeftTableViewBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33991C47C7B400DC42C4 /* PKLeftTableViewBook.m */; };
 		04FC339E1C47D9A400DC42C4 /* PKLeftDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC339D1C47D9A400DC42C4 /* PKLeftDownView.m */; };
+		04FC33A21C48D07A00DC42C4 /* PKLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33A11C48D07A00DC42C4 /* PKLandingViewController.m */; };
+		04FC33A61C48D0CE00DC42C4 /* PKThirdLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33A51C48D0CE00DC42C4 /* PKThirdLandingView.m */; };
+		04FC33A91C48E3B300DC42C4 /* PKMiddleLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33A81C48E3B300DC42C4 /* PKMiddleLandingView.m */; };
+		04FC33AC1C48E54C00DC42C4 /* PKHeadLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33AB1C48E54C00DC42C4 /* PKHeadLandingView.m */; };
 		60BB1D961C473118007D8F51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB1D951C473118007D8F51 /* main.m */; };
 		60BB1D991C473118007D8F51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BB1D981C473118007D8F51 /* AppDelegate.m */; };
 		60BB1D9F1C473118007D8F51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60BB1D9D1C473118007D8F51 /* Main.storyboard */; };
@@ -142,6 +146,14 @@
 		04FC33991C47C7B400DC42C4 /* PKLeftTableViewBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLeftTableViewBook.m; sourceTree = "<group>"; };
 		04FC339C1C47D9A400DC42C4 /* PKLeftDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLeftDownView.h; path = "左侧菜单/view/PKLeftDownView.h"; sourceTree = "<group>"; };
 		04FC339D1C47D9A400DC42C4 /* PKLeftDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLeftDownView.m; path = "左侧菜单/view/PKLeftDownView.m"; sourceTree = "<group>"; };
+		04FC33A01C48D07A00DC42C4 /* PKLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLandingViewController.h; path = "登陆/PKLandingViewController.h"; sourceTree = "<group>"; };
+		04FC33A11C48D07A00DC42C4 /* PKLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLandingViewController.m; path = "登陆/PKLandingViewController.m"; sourceTree = "<group>"; };
+		04FC33A41C48D0CE00DC42C4 /* PKThirdLandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKThirdLandingView.h; path = "登陆/view/PKThirdLandingView.h"; sourceTree = "<group>"; };
+		04FC33A51C48D0CE00DC42C4 /* PKThirdLandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKThirdLandingView.m; path = "登陆/view/PKThirdLandingView.m"; sourceTree = "<group>"; };
+		04FC33A71C48E3B300DC42C4 /* PKMiddleLandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMiddleLandingView.h; path = "登陆/view/PKMiddleLandingView.h"; sourceTree = "<group>"; };
+		04FC33A81C48E3B300DC42C4 /* PKMiddleLandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKMiddleLandingView.m; path = "登陆/view/PKMiddleLandingView.m"; sourceTree = "<group>"; };
+		04FC33AA1C48E54C00DC42C4 /* PKHeadLandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHeadLandingView.h; sourceTree = "<group>"; };
+		04FC33AB1C48E54C00DC42C4 /* PKHeadLandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHeadLandingView.m; sourceTree = "<group>"; };
 		60BB1D911C473118007D8F51 /* iOSPianKe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSPianKe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60BB1D951C473118007D8F51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60BB1D971C473118007D8F51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -409,6 +421,29 @@
 			name = tableView;
 			sourceTree = "<group>";
 		};
+		04FC339F1C48D01700DC42C4 /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				04FC33A01C48D07A00DC42C4 /* PKLandingViewController.h */,
+				04FC33A11C48D07A00DC42C4 /* PKLandingViewController.m */,
+				04FC33A31C48D08D00DC42C4 /* view */,
+			);
+			name = "登陆";
+			sourceTree = "<group>";
+		};
+		04FC33A31C48D08D00DC42C4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04FC33AA1C48E54C00DC42C4 /* PKHeadLandingView.h */,
+				04FC33AB1C48E54C00DC42C4 /* PKHeadLandingView.m */,
+				04FC33A71C48E3B300DC42C4 /* PKMiddleLandingView.h */,
+				04FC33A81C48E3B300DC42C4 /* PKMiddleLandingView.m */,
+				04FC33A41C48D0CE00DC42C4 /* PKThirdLandingView.h */,
+				04FC33A51C48D0CE00DC42C4 /* PKThirdLandingView.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		60BB1D881C473118007D8F51 = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +470,7 @@
 				60BB1D971C473118007D8F51 /* AppDelegate.h */,
 				60BB1D981C473118007D8F51 /* AppDelegate.m */,
 				04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */,
+				04FC339F1C48D01700DC42C4 /* 登陆 */,
 				04FC33801C47761800DC42C4 /* 首页 */,
 				04FC337C1C47751600DC42C4 /* 左侧菜单 */,
 				60BB1EBD1C473685007D8F51 /* 工具类 */,
@@ -923,8 +959,10 @@
 				60BB1E9A1C4733A9007D8F51 /* MJDIYAutoFooter.m in Sources */,
 				60BB1E741C4733A9007D8F51 /* AFURLConnectionOperation.m in Sources */,
 				60BB1E861C4733A9007D8F51 /* NSArray+MASAdditions.m in Sources */,
+				04FC33A61C48D0CE00DC42C4 /* PKThirdLandingView.m in Sources */,
 				60BB1E891C4733A9007D8F51 /* MJRefreshAutoFooter.m in Sources */,
 				60BB1E7A1C4733A9007D8F51 /* UIAlertView+AFNetworking.m in Sources */,
+				04FC33A91C48E3B300DC42C4 /* PKMiddleLandingView.m in Sources */,
 				60BB1E731C4733A9007D8F51 /* AFSecurityPolicy.m in Sources */,
 				60BB1EAB1C4733A9007D8F51 /* SDWebImageDownloaderOperation.m in Sources */,
 				04FC33911C47A3C300DC42C4 /* PKLeftTableViewCell.m in Sources */,
@@ -961,6 +999,7 @@
 				60BB1E921C4733A9007D8F51 /* MJRefreshBackNormalFooter.m in Sources */,
 				60BB1E711C4733A9007D8F51 /* AFHTTPSessionManager.m in Sources */,
 				60BB1E8A1C4733A9007D8F51 /* MJRefreshBackFooter.m in Sources */,
+				04FC33A21C48D07A00DC42C4 /* PKLandingViewController.m in Sources */,
 				60BB1E851C4733A9007D8F51 /* MASViewConstraint.m in Sources */,
 				60BB1ED11C473685007D8F51 /* UIImageView+SDWedImage.m in Sources */,
 				60BB1E781C4733A9007D8F51 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -996,6 +1035,7 @@
 				60BB1E9C1C4733A9007D8F51 /* MJDIYHeader.m in Sources */,
 				04FC339A1C47C7B400DC42C4 /* PKLeftTableViewBook.m in Sources */,
 				60BB1E981C4733A9007D8F51 /* MJChiBaoZiFooter2.m in Sources */,
+				04FC33AC1C48E54C00DC42C4 /* PKHeadLandingView.m in Sources */,
 				04FC339E1C47D9A400DC42C4 /* PKLeftDownView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
