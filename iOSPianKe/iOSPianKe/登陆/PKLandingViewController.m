@@ -12,7 +12,7 @@
 #import "PKMiddleLandingView.h" // 中间
 #import "PKThirdLandingView.h" // 下面合作界面
 
-@interface PKLandingViewController ()
+@interface PKLandingViewController ()<UITextFieldDelegate>
 
 @property (strong, nonatomic) PKHeadLandingView* headLandingView;
 
@@ -66,6 +66,7 @@
     if (!_headLandingView) {
         _headLandingView = [[PKHeadLandingView alloc] init];
         [_headLandingView.returnBtn addTarget:self action:@selector(pushToLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
+        [_headLandingView.registerBtn addTarget:self action:@selector(selector) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _headLandingView;
 }
@@ -73,6 +74,9 @@
 - (PKMiddleLandingView*)middleLandingView {
     if (!_middleLandingView) {
         _middleLandingView = [[PKMiddleLandingView alloc] init];
+        // 让textField遵从代理方法
+        _middleLandingView.emailText.delegate = self;
+        _middleLandingView.passwordText.delegate = self;
     }
     return _middleLandingView;
 }
@@ -88,6 +92,49 @@
 - (void)pushToLandingViewController {
     // 回到上一视图
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+// 当文本框将要进行编辑的时候调用这个方法
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    WS(weakSelf);
+    if (textField == _middleLandingView.emailText) {
+        // 第一个参数是时间
+        // block体是屏幕上移或下移的方法
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect = weakSelf.view.bounds;
+            rect.origin.y = 50;
+            weakSelf.view.bounds = rect;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect = weakSelf.view.bounds;
+            rect.origin.y = 100;
+            weakSelf.view.bounds = rect;
+        }];
+    }
+    return YES;
+}
+// 点击return隐藏键盘（前提是textField遵从代理方法UITextFieldDelegate）
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
+    [_middleLandingView.emailText resignFirstResponder];
+    [_middleLandingView.passwordText resignFirstResponder];
+    WS(weakSelf);
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = weakSelf.view.bounds;
+        rect.origin.y = 0;
+        weakSelf.view.bounds = rect;
+    }];
+    return YES;
+}
+// 点击空白隐藏键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_middleLandingView.emailText resignFirstResponder];
+    [_middleLandingView.passwordText resignFirstResponder];
+    WS(weakSelf);
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = weakSelf.view.bounds;
+        rect.origin.y = 0;
+        weakSelf.view.bounds = rect;
+    }];
 }
 
 //// 点击屏幕触发方法
