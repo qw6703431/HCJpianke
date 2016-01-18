@@ -11,6 +11,7 @@
 #import "PKHeadLandingView.h" // 上面
 #import "PKMiddleLandingView.h" // 中间
 #import "PKThirdLandingView.h" // 下面合作界面
+#import "PKLoginViewController.h" // 注册界面
 
 @interface PKLandingViewController ()<UITextFieldDelegate>
 
@@ -65,8 +66,8 @@
 - (PKHeadLandingView*)headLandingView {
     if (!_headLandingView) {
         _headLandingView = [[PKHeadLandingView alloc] init];
-        [_headLandingView.returnBtn addTarget:self action:@selector(pushToLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
-        [_headLandingView.registerBtn addTarget:self action:@selector(selector) forControlEvents:(UIControlEventTouchUpInside)];
+        [_headLandingView.returnBtn addTarget:self action:@selector(returnLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
+        [_headLandingView.registerBtn addTarget:self action:@selector(pushToLandingViewController) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _headLandingView;
 }
@@ -88,8 +89,14 @@
     }
     return _thirdLandingView;
 }
-
+// 跳转到注册界面
 - (void)pushToLandingViewController {
+    PKLoginViewController* login = [[PKLoginViewController alloc] init];
+    // 模态化视图跳转->登陆界面
+    [self presentViewController:login animated:YES completion:nil];
+}
+
+- (void)returnLandingViewController {
     // 回到上一视图
     [self dismissViewControllerAnimated:YES completion:nil];
 }

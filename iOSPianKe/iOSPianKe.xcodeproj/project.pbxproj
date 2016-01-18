@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042C8F571C4C82E8007B4988 /* PKLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F561C4C82E8007B4988 /* PKLoginView.m */; };
+		042C8F5A1C4C830E007B4988 /* PKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F591C4C830E007B4988 /* PKLoginViewController.m */; };
+		042C8F5D1C4CBBED007B4988 /* PKLoginHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F5C1C4CBBED007B4988 /* PKLoginHeadView.m */; };
 		04FC337F1C4775BA00DC42C4 /* PKLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC337E1C4775BA00DC42C4 /* PKLeftMenuViewController.m */; };
 		04FC33831C47767000DC42C4 /* PKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33821C47767000DC42C4 /* PKHomeViewController.m */; };
 		04FC33881C477CF600DC42C4 /* PKLeftHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */; };
@@ -129,6 +132,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042C8F551C4C82E8007B4988 /* PKLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLoginView.h; path = "注册/view/PKLoginView.h"; sourceTree = "<group>"; };
+		042C8F561C4C82E8007B4988 /* PKLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLoginView.m; path = "注册/view/PKLoginView.m"; sourceTree = "<group>"; };
+		042C8F581C4C830E007B4988 /* PKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLoginViewController.h; path = "注册/PKLoginViewController.h"; sourceTree = "<group>"; };
+		042C8F591C4C830E007B4988 /* PKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLoginViewController.m; path = "注册/PKLoginViewController.m"; sourceTree = "<group>"; };
+		042C8F5B1C4CBBED007B4988 /* PKLoginHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLoginHeadView.h; path = "注册/view/PKLoginHeadView.h"; sourceTree = "<group>"; };
+		042C8F5C1C4CBBED007B4988 /* PKLoginHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLoginHeadView.m; path = "注册/view/PKLoginHeadView.m"; sourceTree = "<group>"; };
 		04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04FC337D1C4775BA00DC42C4 /* PKLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLeftMenuViewController.h; sourceTree = "<group>"; };
 		04FC337E1C4775BA00DC42C4 /* PKLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLeftMenuViewController.m; sourceTree = "<group>"; };
@@ -368,6 +377,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042C8F501C4C821B007B4988 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				042C8F581C4C830E007B4988 /* PKLoginViewController.h */,
+				042C8F591C4C830E007B4988 /* PKLoginViewController.m */,
+				042C8F541C4C82B0007B4988 /* view */,
+			);
+			name = "注册";
+			sourceTree = "<group>";
+		};
+		042C8F541C4C82B0007B4988 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				042C8F5B1C4CBBED007B4988 /* PKLoginHeadView.h */,
+				042C8F5C1C4CBBED007B4988 /* PKLoginHeadView.m */,
+				042C8F551C4C82E8007B4988 /* PKLoginView.h */,
+				042C8F561C4C82E8007B4988 /* PKLoginView.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		04FC337C1C47751600DC42C4 /* 左侧菜单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,9 +500,10 @@
 				60BB1D971C473118007D8F51 /* AppDelegate.h */,
 				60BB1D981C473118007D8F51 /* AppDelegate.m */,
 				04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */,
+				042C8F501C4C821B007B4988 /* 注册 */,
 				04FC339F1C48D01700DC42C4 /* 登陆 */,
-				04FC33801C47761800DC42C4 /* 首页 */,
 				04FC337C1C47751600DC42C4 /* 左侧菜单 */,
+				04FC33801C47761800DC42C4 /* 首页 */,
 				60BB1EBD1C473685007D8F51 /* 工具类 */,
 				60BB1EB51C4733EF007D8F51 /* 基类 */,
 				60BB1DCD1C4733A9007D8F51 /* 开源库 */,
@@ -967,6 +998,7 @@
 				60BB1EAB1C4733A9007D8F51 /* SDWebImageDownloaderOperation.m in Sources */,
 				04FC33911C47A3C300DC42C4 /* PKLeftTableViewCell.m in Sources */,
 				60BB1E901C4733A9007D8F51 /* MJRefreshAutoStateFooter.m in Sources */,
+				042C8F5D1C4CBBED007B4988 /* PKLoginHeadView.m in Sources */,
 				60BB1EA61C4733A9007D8F51 /* NSData+ImageContentType.m in Sources */,
 				04FC33831C47767000DC42C4 /* PKHomeViewController.m in Sources */,
 				60BB1EAD1C4733A9007D8F51 /* SDWebImagePrefetcher.m in Sources */,
@@ -998,6 +1030,8 @@
 				60BB1E9E1C4733A9007D8F51 /* MJRefreshConst.m in Sources */,
 				60BB1E921C4733A9007D8F51 /* MJRefreshBackNormalFooter.m in Sources */,
 				60BB1E711C4733A9007D8F51 /* AFHTTPSessionManager.m in Sources */,
+				042C8F5A1C4C830E007B4988 /* PKLoginViewController.m in Sources */,
+				042C8F571C4C82E8007B4988 /* PKLoginView.m in Sources */,
 				60BB1E8A1C4733A9007D8F51 /* MJRefreshBackFooter.m in Sources */,
 				04FC33A21C48D07A00DC42C4 /* PKLandingViewController.m in Sources */,
 				60BB1E851C4733A9007D8F51 /* MASViewConstraint.m in Sources */,

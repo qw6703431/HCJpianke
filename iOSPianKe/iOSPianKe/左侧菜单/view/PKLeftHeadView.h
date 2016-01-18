@@ -10,7 +10,7 @@
 
 @interface PKLeftHeadView : UIView
 
-@property (strong, nonatomic) UIButton* iconImageBtn; // 头像
+@property (strong, nonatomic) UIButton* iconImageBtn; // 头像按钮
 @property (strong, nonatomic) UIButton* userNameBtn; // 用户名登陆按钮
 @property (strong, nonatomic) UIButton* downBtn; // 下载按钮
 @property (strong, nonatomic) UIButton* collecBtn; // 收藏按钮
