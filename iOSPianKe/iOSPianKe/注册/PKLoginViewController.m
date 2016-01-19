@@ -99,18 +99,41 @@
         [self.view makeToast:@"头像不能为空" duration:1 position:@"center"];
     } else {
         WS(weakSelf);
+        // 显示等待动画
+        [JPRefreshView showJPRefreshFromView:self.view];
         [ZJPBaseHttpTool postImagePath:@"http://api2.pianke.me/user/reg" params:[self makeLoginRequestDic] image:_imageFiled success:^(id JSON) {
             NSDictionary *returnDic = JSON;
             //判断是否成功，如果result为 1 ，注册成功，result为0，查看返回字典中data字段中msg的错误原因
             if ([returnDic[@"result"] integerValue] == 1) {
-                //成功后的提示框，方法在 UIView+Toast 中，第一个参数是提示的内容，第二个是显示时间，第三个是显示位置，一共有三个
-                [_landingViewController.view makeToast:@"注册成功" duration:1 position:@"center"];
-                // 返回登陆界面
-//                [self dismissViewControllerAnimated:YES completion:nil];
+                // 移除等待动画
+                [JPRefreshView removeJPRefreshFromView:weakSelf.view];
+                // 自定义队列，第一个参数队列名字，第二个参数，该队列是串行还是并行
+                dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
+                dispatch_async(queue, ^{
+                    // 使当前线程睡眠3秒
+                    [NSThread sleepForTimeInterval:1.5];
+                });
+                dispatch_async(queue, ^{
+                    // 刷新UI放到主线程里
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //成功后的提示框，方法在 UIView+Toast 中，第一个参数是提示的内容，第二个是显示时间，第三个是显示位置，一共有三个
+                        [weakSelf.view makeToast:@"注册成功" duration:1 position:@"center"];
+                    });
+                });
+                // 前面执行完毕后才会执行
+                dispatch_barrier_async(queue, ^{
+                    // 刷新UI放到主线程里
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // 返回登陆界面
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    });
+                });
             } else {
+                [JPRefreshView removeJPRefreshFromView:weakSelf.view];
                [weakSelf.view makeToast:[returnDic[@"data"] valueForKey:@"msg"] duration:1 position:@"center"];
             }
         } failure:^(NSError *error) {
+            [JPRefreshView removeJPRefreshFromView:weakSelf.view];
             [weakSelf.view makeToast:@"注册失败" duration:1 position:@"center"];
         }];
     }
@@ -118,21 +141,21 @@
 
 - (NSDictionary*)makeLoginRequestDic{
         NSDictionary* dic = @{@"client":@"1",
-                                                        @"deviceid":@"A55AF7DB-88C8-408D-B983-D0B9C9CA0B36",
-                                                         @"email":_loginView.emailText.text,
-                                                        @"gender":@"1",
-                                                        @"passwd":_loginView.passwordText.text,
-                                                         @"uname":_loginView.userNameText.text,
-                                                         @"version":@"3.0.6",
-                                                        @"auth":@"",
-                                                        @"iconfile":_imageFiled};
+                              @"deviceid":@"A55AF7DB-88C8-408D-B983-D0B9C9CA0B36",
+                              @"email":_loginView.emailText.text,
+                              @"gender":@"1",
+                              @"passwd":_loginView.passwordText.text,
+                              @"uname":_loginView.userNameText.text,
+                              @"version":@"3.0.6",
+                              @"auth":@"",
+                              @"iconfile":_imageFiled};
         return dic;
 }
 #pragma mark - 调用相机相册
 //判断是从相册还是相机获取图片
 - (void)imageBtnMethod{
     UIActionSheet* sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册中选择", nil];
-    //设置哪一个显示红色文字提示4225836921
+    //设置哪一个显示红色文字提示
     sheet.destructiveButtonIndex = -1;
     [sheet showInView:self.view];
 }

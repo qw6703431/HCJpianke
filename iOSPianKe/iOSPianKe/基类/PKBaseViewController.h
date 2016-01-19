@@ -15,6 +15,7 @@
 #import "JPRefreshView.h"
 #import "UIBarButtonItem+Helper.h"
 #import "ZJPBaseHttpTool.h"
+#import "JPRefreshView.h"
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpErrorBlock)(NSError *error);
