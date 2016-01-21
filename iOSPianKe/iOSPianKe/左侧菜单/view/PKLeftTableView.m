@@ -17,6 +17,7 @@
 @end
 
 @implementation PKLeftTableView
+static NSString* identifier = @"cell";
 
 - (NSArray*)cellArray {
     if (_cellArray == nil) {
@@ -44,7 +45,7 @@
         // 注册代码实现的cell ，要使用registerClass
         [self registerClass:[PKLeftTableViewCell class] forCellReuseIdentifier:@"cell"];
         // 关闭表格的分割线
-        self.separatorStyle = NO;
+//        self.separatorStyle = NO;
         self.backgroundColor = RGB(51, 51, 51);
     }
     return self;
@@ -56,7 +57,6 @@
 }
 // cell
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* identifier = @"cell";
     PKLeftTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     PKLeftTableViewBook* bookModel = self.cellArray[indexPath.row];
@@ -71,11 +71,11 @@
 }
 // 点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    // 检测代理能否响应这个方法
+    if ([_RowDelegate respondsToSelector:@selector(selectDidWhichRow:)]) {
+        [_RowDelegate selectDidWhichRow:indexPath.row];
+    }
 }
-
-
-
 @end
 
 

@@ -15,22 +15,11 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        UIImageView* imageView = [[UIImageView alloc] init];
-//        UILabel* label = [[UILabel alloc] init];
-//        label.textColor = [UIColor whiteColor];
-//        
-//        CGFloat centerY = ((VIEW_HEIGHT-180-60)/6-25)/2;
-//        
-//        imageView.frame = CGRectMake((VIEW_WIDTH-125)/5, centerY, 25, 25);
-//        label.frame = CGRectMake((VIEW_WIDTH-125)/5+50, centerY, 50, 25);
+
         self.backgroundColor = RGB(51, 51, 51);
         
         [self addSubview:self.leftImage];
         [self addSubview:self.label];
-        
-        
-//        self.leftImage = imageView;
-//        self.label = label;
         
     }
     return self;
@@ -73,11 +62,5 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    
-    // Configure the view for the selected state
-}
 
 @end

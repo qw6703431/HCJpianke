@@ -61,8 +61,6 @@
     }
     // 每次触发事件调用都切换按钮的选中状态和普通状态
 //    btn.selected = !btn.selected;
-    
-    
 }
 
 - (void)addAutoLayout {
