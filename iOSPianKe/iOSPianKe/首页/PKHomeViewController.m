@@ -142,7 +142,10 @@
     
     // 设置左侧按钮
     [self.navigationItem setLeftBarButtonItems:@[leftBtn,leftLa] animated:YES];
-    /************************自定义右侧按钮**********************/
+    
+    /***********************************************************/
+    /************************自定义右侧按钮***********************/
+    /***********************************************************/
     _btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [_btn1 setImage:[UIImage imageNamed:@"nav碎片"] forState:(UIControlStateNormal)];
     [_btn1 setImage:[UIImage imageNamed:@"nav碎片_sel"] forState:(UIControlStateSelected)];
@@ -165,20 +168,11 @@
     UIBarButtonItem* rightBtn2 = [[UIBarButtonItem alloc] initWithCustomView:_btn2];
     UIBarButtonItem* rightBtn3 = [[UIBarButtonItem alloc] initWithCustomView:_btn3];
     
-//    UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-//    UIBarButtonItem* rightLabel1 = [[UIBarButtonItem alloc] initWithCustomView:label1];
-//    
-//    UILabel* label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-//    UIBarButtonItem* rightLabel2 = [[UIBarButtonItem alloc] initWithCustomView:label2];
-//    
-//    UILabel* label3 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-//    UIBarButtonItem* rightLabel3 = [[UIBarButtonItem alloc] initWithCustomView:label3];
     // 绑定点击状态事件
     [self.btn1 addTarget:self action:@selector(btnPress:) forControlEvents:UIControlEventTouchUpInside];
     [self.btn2 addTarget:self action:@selector(btnPress:) forControlEvents:UIControlEventTouchUpInside];
     [self.btn3 addTarget:self action:@selector(btnPress:) forControlEvents:UIControlEventTouchUpInside];
     // 右侧设置多个按钮
-//    [self.navigationItem setRightBarButtonItems:@[rightBtn3,rightLabel3,rightBtn2,rightLabel2,rightBtn1,rightLabel1] animated:YES];
     [self.navigationItem setRightBarButtonItems:@[rightBtn3,rightBtn2,rightBtn1] animated:YES];
 
 }

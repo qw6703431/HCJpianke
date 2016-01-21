@@ -113,7 +113,7 @@
     }];
     
     [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf.mas_right).offset(-60);
+        make.right.equalTo(weakSelf.mas_right).offset(-20);
         make.centerY.equalTo(weakSelf.mas_centerY);
         make.size.equalTo(CGSizeMake(30, 30));
     }];

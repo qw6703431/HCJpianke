@@ -45,7 +45,7 @@ static NSString* identifier = @"cell";
         // 注册代码实现的cell ，要使用registerClass
         [self registerClass:[PKLeftTableViewCell class] forCellReuseIdentifier:@"cell"];
         // 关闭表格的分割线
-//        self.separatorStyle = NO;
+        self.separatorStyle = NO;
         self.backgroundColor = RGB(51, 51, 51);
     }
     return self;
@@ -57,6 +57,7 @@ static NSString* identifier = @"cell";
 }
 // cell
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     PKLeftTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     PKLeftTableViewBook* bookModel = self.cellArray[indexPath.row];

@@ -50,13 +50,13 @@
     CGFloat height = VIEW_HEIGHT-190-60;
     [_leftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view.mas_left);
-        make.right.equalTo(weakSelf.view.mas_right);
+        make.right.equalTo(weakSelf.view.mas_right).offset(-45);
         make.top.equalTo(weakSelf.leftheadView.mas_bottom);
         make.height.equalTo(height);
     }];
     [_leftdownView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view.mas_left);
-        make.right.equalTo(weakSelf.view.mas_right);
+        make.right.equalTo(weakSelf.view.mas_right).offset(-45);
         make.bottom.equalTo(weakSelf.view.mas_bottom);
         make.top.equalTo(weakSelf.leftTableView.mas_bottom);
     }];
@@ -96,16 +96,19 @@
     switch (row) {
         case 0:
         {
+            // 初始化页面
             PKHomeViewController *homeController = [[PKHomeViewController alloc]init];
+            // 设置根视图
             ZJPNavigationController *homeNav = [[ZJPNavigationController alloc]initWithRootViewController:homeController];
+            // 进行页面跳转
             [self.sideMenuViewController setContentViewController:homeNav animated:YES];
+            // 隐藏侧边菜单
             [self.sideMenuViewController hideMenuViewController];
         }
             break;
         case 1:
         {
             PKRadioViewController *radioController = [[PKRadioViewController alloc]init];
-            radioController.title = @"电台";
             ZJPNavigationController *radioNav = [[ZJPNavigationController alloc]initWithRootViewController:radioController];
             [self.sideMenuViewController setContentViewController:radioNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];
@@ -114,7 +117,6 @@
         case 2:
         {
             PKReadViewController *readController = [[PKReadViewController alloc]init];
-            readController.title = @"阅读";
             ZJPNavigationController *readNav = [[ZJPNavigationController alloc]initWithRootViewController:readController];
             [self.sideMenuViewController setContentViewController:readNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];
@@ -123,7 +125,6 @@
         case 3:
         {
             PKCommunityViewController *CommunityController = [[PKCommunityViewController alloc]init];
-            CommunityController.title = @"社区";
             ZJPNavigationController *CommunityNav = [[ZJPNavigationController alloc]initWithRootViewController:CommunityController];
             [self.sideMenuViewController setContentViewController:CommunityNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];
@@ -132,7 +133,6 @@
         case 4:
         {
             PKFragmentViewController *FragmentController = [[PKFragmentViewController alloc]init];
-            FragmentController.title = @"碎片";
             ZJPNavigationController *FragmentNav = [[ZJPNavigationController alloc]initWithRootViewController:FragmentController];
             [self.sideMenuViewController setContentViewController:FragmentNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];
@@ -141,7 +141,6 @@
         case 5:
         {
             PKGoodProductsViewController *GoodProductsController = [[PKGoodProductsViewController alloc]init];
-            GoodProductsController.title = @"良品";
             ZJPNavigationController *GoodProductsNav = [[ZJPNavigationController alloc]initWithRootViewController:GoodProductsController];
             [self.sideMenuViewController setContentViewController:GoodProductsNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];
@@ -150,7 +149,6 @@
         case 6:
         {
             PKSettingViewController *SettingeController = [[PKSettingViewController alloc]init];
-            SettingeController.title = @"设置";
             ZJPNavigationController *SettingNav = [[ZJPNavigationController alloc]initWithRootViewController:SettingeController];
             [self.sideMenuViewController setContentViewController:SettingNav animated:YES];
             [self.sideMenuViewController hideMenuViewController];

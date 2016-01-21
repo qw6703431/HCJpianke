@@ -15,6 +15,13 @@
 
 @property (strong, nonatomic) PKFragmentTableView* fragmentTableView;
 @property (strong, nonatomic) NSMutableArray *arr;
+// nav左面的按钮和lebel
+@property (strong, nonatomic) UIButton* leftBtn;
+@property (strong, nonatomic) UILabel* leftLabel;
+// 导航栏右边的两个btn
+@property (strong, nonatomic) UIButton* commentBtn; // 写评论
+@property (strong, nonatomic) UIButton* labelBtn; // 标签
+
 @end
 
 @implementation PKFragmentViewController
@@ -23,6 +30,8 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.fragmentTableView];
+    
+    [self navigationBtn];
     [self addAutoLayout];
     
     [self POSTHttpFragment:0];
@@ -30,7 +39,54 @@
 
     // Do any additional setup after loading the view.
 }
-
+- (void)navigationBtn {
+    // 自定义导航栏左边按钮样式
+    _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_leftBtn setFrame:CGRectMake(0, 0, 40, 40)];
+    [_leftBtn setImage:[UIImage imageNamed:@"菜单"] forState:(UIControlStateNormal)];
+    // 导航栏按钮图片的偏移量
+    [_leftBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+    // 导航栏按钮文字的偏移量
+    //    [_leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [_leftBtn addTarget:self action:@selector(leftAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* leftBtn = [[UIBarButtonItem alloc] initWithCustomView:_leftBtn];
+    
+    UIView* leftView = [[UIView alloc] init];
+    leftView.backgroundColor = [UIColor grayColor];
+    leftView.frame = CGRectMake(35, -2, 1, 44);
+    [_leftBtn addSubview:leftView];
+    
+    _leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    _leftLabel.text = @"碎片";
+    _leftLabel.font = [UIFont systemFontOfSize:15.0];
+    UIBarButtonItem* leftLa = [[UIBarButtonItem alloc] initWithCustomView:_leftLabel];
+    
+    // 设置左侧按钮
+    [self.navigationItem setLeftBarButtonItems:@[leftBtn,leftLa] animated:YES];
+    
+    /***********************************************************/
+    /************************自定义右侧按钮***********************/
+    /***********************************************************/
+    _commentBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_commentBtn setImage:[UIImage imageNamed:@"写评论1"] forState:(UIControlStateNormal)];
+    [_commentBtn setFrame:CGRectMake(0, 0, 40, 25)];
+    
+    _labelBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_labelBtn setImage:[UIImage imageNamed:@"标签"] forState:(UIControlStateNormal)];
+    [_labelBtn setFrame:CGRectMake(0, 0, 40, 25)];
+    
+    UIBarButtonItem* rightBtn1 = [[UIBarButtonItem alloc] initWithCustomView:_commentBtn];
+    UIBarButtonItem* rightBtn2 = [[UIBarButtonItem alloc] initWithCustomView:_labelBtn];
+    // 右侧设置多个按钮
+    [self.navigationItem setRightBarButtonItems:@[rightBtn1,rightBtn2] animated:YES];
+    
+    
+}
+// nav左边按钮所响应的事件
+- (void)leftAction:(id)sender {
+    // 跳到抽屉
+    [self presentLeftMenuViewController:nil];
+}
 // 自适应TableView
 - (void)addAutoLayout {
     WS(weakSelf);

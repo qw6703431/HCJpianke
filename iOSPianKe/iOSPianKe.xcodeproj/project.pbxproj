@@ -25,6 +25,8 @@
 		042C8F9F1C4E6EAC007B4988 /* PKLeftTableViewBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F9E1C4E6EAC007B4988 /* PKLeftTableViewBook.m */; };
 		042C8FA61C4F6163007B4988 /* PKFragmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FA51C4F6163007B4988 /* PKFragmentTableViewCell.m */; };
 		042C8FAB1C4F7D0B007B4988 /* PKFragmentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FAA1C4F7D0B007B4988 /* PKFragmentTableView.m */; };
+		042C8FAF1C50B7B3007B4988 /* PKGoodProductsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FAE1C50B7B3007B4988 /* PKGoodProductsTableView.m */; };
+		042C8FB21C50B7E6007B4988 /* PKGoodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */; };
 		04FC33881C477CF600DC42C4 /* PKLeftHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */; };
 		04FC338B1C479F4F00DC42C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FC338A1C479F4F00DC42C4 /* Assets.xcassets */; };
 		04FC338E1C47A11000DC42C4 /* PKLeftTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC338D1C47A11000DC42C4 /* PKLeftTableView.m */; };
@@ -179,6 +181,10 @@
 		042C8FA51C4F6163007B4988 /* PKFragmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFragmentTableViewCell.m; path = "碎片/view/PKFragmentTableViewCell.m"; sourceTree = "<group>"; };
 		042C8FA91C4F7D0B007B4988 /* PKFragmentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFragmentTableView.h; path = "碎片/view/PKFragmentTableView.h"; sourceTree = "<group>"; };
 		042C8FAA1C4F7D0B007B4988 /* PKFragmentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFragmentTableView.m; path = "碎片/view/PKFragmentTableView.m"; sourceTree = "<group>"; };
+		042C8FAD1C50B7B3007B4988 /* PKGoodProductsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsTableView.h; path = "良品/view/PKGoodProductsTableView.h"; sourceTree = "<group>"; };
+		042C8FAE1C50B7B3007B4988 /* PKGoodProductsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsTableView.m; path = "良品/view/PKGoodProductsTableView.m"; sourceTree = "<group>"; };
+		042C8FB01C50B7E6007B4988 /* PKGoodProductsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsTableViewCell.h; path = "良品/view/PKGoodProductsTableViewCell.h"; sourceTree = "<group>"; };
+		042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsTableViewCell.m; path = "良品/view/PKGoodProductsTableViewCell.m"; sourceTree = "<group>"; };
 		04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04FC33861C477CF600DC42C4 /* PKLeftHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLeftHeadView.h; path = "左侧菜单/view/PKLeftHeadView.h"; sourceTree = "<group>"; };
 		04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLeftHeadView.m; path = "左侧菜单/view/PKLeftHeadView.m"; sourceTree = "<group>"; };
@@ -472,6 +478,7 @@
 			children = (
 				042C8F791C4E68CA007B4988 /* PKGoodProductsViewController.h */,
 				042C8F7A1C4E68CA007B4988 /* PKGoodProductsViewController.m */,
+				042C8FAC1C50B76D007B4988 /* viwe */,
 			);
 			name = "良品";
 			sourceTree = "<group>";
@@ -522,6 +529,17 @@
 				042C8FA51C4F6163007B4988 /* PKFragmentTableViewCell.m */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		042C8FAC1C50B76D007B4988 /* viwe */ = {
+			isa = PBXGroup;
+			children = (
+				042C8FAD1C50B7B3007B4988 /* PKGoodProductsTableView.h */,
+				042C8FAE1C50B7B3007B4988 /* PKGoodProductsTableView.m */,
+				042C8FB01C50B7E6007B4988 /* PKGoodProductsTableViewCell.h */,
+				042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */,
+			);
+			name = viwe;
 			sourceTree = "<group>";
 		};
 		04FC337C1C47751600DC42C4 /* 左侧菜单 */ = {
@@ -1197,6 +1215,7 @@
 				60BB1E7B1C4733A9007D8F51 /* UIButton+AFNetworking.m in Sources */,
 				60BB1E7E1C4733A9007D8F51 /* UIRefreshControl+AFNetworking.m in Sources */,
 				60BB1E7F1C4733A9007D8F51 /* UIWebView+AFNetworking.m in Sources */,
+				042C8FAF1C50B7B3007B4988 /* PKGoodProductsTableView.m in Sources */,
 				60BB1ECC1C473685007D8F51 /* GCDCountdownTime.m in Sources */,
 				60BB1E721C4733A9007D8F51 /* AFNetworkReachabilityManager.m in Sources */,
 				60BB1E961C4733A9007D8F51 /* MJRefreshStateHeader.m in Sources */,
@@ -1217,6 +1236,7 @@
 				60BB1E981C4733A9007D8F51 /* MJChiBaoZiFooter2.m in Sources */,
 				042C8F871C4E6935007B4988 /* PKFragmentViewController.m in Sources */,
 				04FC339E1C47D9A400DC42C4 /* PKLeftDownView.m in Sources */,
+				042C8FB21C50B7E6007B4988 /* PKGoodProductsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
