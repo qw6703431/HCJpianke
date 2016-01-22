@@ -14,7 +14,7 @@ typedef void(^loadMoreDataBlock)();//加载更多数据
 @interface PKGoodProductsTableView : UITableView
 
 @property (strong, nonatomic) NSArray* dataArray;
-
+@property (nonatomic, strong) UIViewController *controller;
 @property (copy, nonatomic) loadNewDataBlock NewDataBlock;
 @property (copy, nonatomic) loadMoreDataBlock MoreDataBlock;
 

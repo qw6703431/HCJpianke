@@ -9,11 +9,9 @@
 #import "PKFragmentTableView.h"
 #import "PKFragmentTableViewCell.h" // 自定义cell（碎片）
 
-#import "UIImageView+SDWedImage.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+SDWedImage.h" // 加载网络图片
 
-#import "MJRefresh.h"
-#import "MJDIYHeader.h"
+#import "MJRefresh.h" // MJ刷新公共类
 #import "MJChiBaoZiHeader.h" // 头部刷新
 #import "MJChiBaoZiFooter2.h" // 底部刷新
 
@@ -21,15 +19,15 @@
 
 @property (strong, nonatomic) NSMutableArray* imageSizeArray;
 
-@property (strong, nonatomic) NSArray* imageHeArray;
+@property (strong, nonatomic) NSMutableArray* imageHeArray;
 
 @end
 
 @implementation PKFragmentTableView
 
-- (NSArray *)imageHeArray {
+- (NSMutableArray *)imageHeArray {
     if (_imageHeArray == nil) {
-        _imageHeArray = [[NSArray alloc] init];
+        _imageHeArray = [[NSMutableArray alloc] init];
         NSMutableArray* muArray = [[NSMutableArray alloc] init];
         for (NSInteger i=0; i<self.imageSizeArray.count; i++) {
             CGFloat imageH = 0.0;
@@ -45,7 +43,7 @@
             NSNumber* imageSizeNumber = [NSNumber numberWithFloat:imageH];
             [muArray addObject:imageSizeNumber];
         }
-        _imageHeArray = muArray;
+        [_imageHeArray addObjectsFromArray:muArray];
     }
     return _imageHeArray;
 }
@@ -92,6 +90,7 @@
 //}
 // 行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.dataArray.count;
 }
 // cell
@@ -138,6 +137,8 @@
             NSDictionary* dic = self.dataArray[i];
             [self.imageSizeArray addObject:dic[@"coverimg_wh"]];
         }
+        // 将图片高度的数组置为空，否则不会执行懒加载
+        self.imageHeArray = nil;
     }
    
     CGFloat cellH = [self.imageHeArray[indexPath.row] floatValue];

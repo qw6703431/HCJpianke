@@ -9,6 +9,7 @@
 #import "PKGoodProductsViewController.h"
 #import "Masonry.h"
 #import "PKGoodProductsTableView.h" // 良品TableView
+#import "MJRefresh.h" // 公共类
 
 @interface PKGoodProductsViewController ()
 
@@ -18,7 +19,9 @@
 @property (strong, nonatomic) UIButton* leftBtn;
 @property (strong, nonatomic) UILabel* leftLabel;
 
-@property (strong, nonatomic) NSArray* goodProductArray;
+@property (strong, nonatomic) NSMutableArray* goodProductArray;
+
+@property (assign, nonatomic) NSInteger start; // 请求参数（从第几行开始）
 
 @end
 
@@ -31,11 +34,30 @@
     
     [self.view addSubview:self.goodProductsTableView];
     
-    [self reloadGoodPraductsData:10];
+    // 初始化行数
+    _start = 0;
+    
+    [self POSTHttpGoodProducts:_start];
+    
+    WS(weakSelf);
+    // 下拉刷新的回调
+    self.goodProductsTableView.NewDataBlock = ^{
+        // 把内容数组中的所有数据移除
+        [weakSelf.goodProductArray removeAllObjects];
+        // 从0（最新的数据）开始
+        [weakSelf POSTHttpGoodProducts:0];
+        
+    };
+    // 上拉加载的回调
+    self.goodProductsTableView.MoreDataBlock = ^{
+        // 将已经自增10个数的start传到POST请求方法里去
+        [weakSelf POSTHttpGoodProducts:weakSelf.start];
+    };
     
     [self navigationBtn];
     
     [self addAutoLayout];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -50,7 +72,7 @@
     }];
 }
 // post请求
-- (void)reloadGoodPraductsData:(NSInteger )start{
+- (void)POSTHttpGoodProducts:(NSInteger )start{
     //制作请求参数
     NSDictionary *requestDic = @{@"auth":@"W8c8Fivl9flDCsJzH8HukzJxQMrm3N7KP9Wc5WTFjcWP229VKTBRU7vI",
                                  @"client":@"1",
@@ -65,13 +87,22 @@
                  
                  NSDictionary *returnDic = JSON;
                  if ([returnDic[@"result"] integerValue] == 1) {
-                     weakSelf.goodProductArray = [returnDic[@"data"] valueForKey:@"list"];
+                     if (weakSelf.goodProductArray == nil) {
+                         weakSelf.goodProductArray = [NSMutableArray array];
+                     }
+                     [weakSelf.goodProductArray addObjectsFromArray:[returnDic[@"data"] valueForKey:@"list"]];
                      
                      weakSelf.goodProductsTableView.dataArray = weakSelf.goodProductArray;
-//                     NSLog(@"%@",weakSelf.goodProductsTableView.dataArray);
+                     
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [weakSelf.goodProductsTableView reloadData];
                      });
+                     // start 自增10 为下拉加载数据做准备
+                     _start += 10;
+                     // 结束底部上拉加载动画
+                     [self.goodProductsTableView.mj_header endRefreshing];
+                     // 结束顶部下拉刷新动画
+                     [self.goodProductsTableView.mj_footer endRefreshing];
                  }
                  
              } errorBlock:^(NSError *error) {
@@ -115,6 +146,7 @@
 - (PKGoodProductsTableView *)goodProductsTableView {
     if (!_goodProductsTableView) {
         _goodProductsTableView = [[PKGoodProductsTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:(UITableViewStylePlain)];
+        _goodProductsTableView.controller = self;
     }
     return _goodProductsTableView;
 }

@@ -9,13 +9,12 @@
 #import "PKGoodProductsTableView.h"
 #import "PKGoodProductsTableViewCell.h"
 
-#import "UIImageView+SDWedImage.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+SDWedImage.h" // 加载网络图片
 
-#import "MJRefresh.h"
-#import "MJDIYHeader.h"
+#import "MJRefresh.h" // MJ刷新公共类
 #import "MJChiBaoZiHeader.h" // 头部刷新
 #import "MJChiBaoZiFooter2.h" // 底部刷新
+#import "PKGoodProductsInfoController.h" // 良品详情
 
 @interface PKGoodProductsTableView()<UITableViewDataSource,UITableViewDelegate>
 
@@ -44,7 +43,6 @@
 }
 #pragma mark- MJ刷新
 - (void)addRefreshControl {
-    
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJChiBaoZiHeader* header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     // 隐藏时间
@@ -70,7 +68,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString* identifier = @"cell";
     PKGoodProductsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-//    NSLog(@"%@",self.dataArray);
+
     NSDictionary* dic = self.dataArray[indexPath.row];
     [cell.contentImage downloadImage:dic[@"coverimg"]];
     cell.contentLabel.text = dic[@"title"];
@@ -81,14 +79,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 220.0;
 }
-
-//下拉刷新全部数据
+// 获取用户当前点击的行数
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PKGoodProductsInfoController* info = [[PKGoodProductsInfoController alloc] init];
+    info.contentID = [self.dataArray[indexPath.row] valueForKey:@"contentid"];
+    
+    [_controller.navigationController pushViewController:info animated:YES];
+}
+// 获取用户上次点击的行数
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+// 下拉刷新全部数据
 - (void)loadMoreData{
     if (_MoreDataBlock) {
         _MoreDataBlock();
     }
 }
-//上拉加载更多数据
+// 上拉加载更多数据
 - (void)loadNewData{
     if (_NewDataBlock) {
         _NewDataBlock();

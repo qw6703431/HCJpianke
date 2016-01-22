@@ -13,7 +13,7 @@ typedef void(^loadMoreDataBlock)();//加载更多数据
 
 @interface PKFragmentTableView : UITableView
 
-@property (strong, nonatomic) NSArray* dataArray;
+@property (strong, nonatomic) NSMutableArray* dataArray;
 
 @property (copy, nonatomic) loadNewDataBlock NewDataBlock;
 @property (copy, nonatomic) loadMoreDataBlock MoreDataBlock;

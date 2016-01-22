@@ -9,6 +9,7 @@
 #import "PKFragmentViewController.h"
 #import "Masonry.h"
 #import "PKFragmentTableView.h" // 碎片TableView
+#import "MJRefresh.h" // 公共类
 
 
 @interface PKFragmentViewController ()
@@ -21,6 +22,7 @@
 // 导航栏右边的两个btn
 @property (strong, nonatomic) UIButton* commentBtn; // 写评论
 @property (strong, nonatomic) UIButton* labelBtn; // 标签
+@property (assign, nonatomic) NSInteger start; // 请求参数（从第几行开始）
 
 @end
 
@@ -33,12 +35,91 @@
     
     [self navigationBtn];
     [self addAutoLayout];
+    // 初始化行数
+    _start = 0;
     
-    [self POSTHttpFragment:0];
+    [self POSTHttpFragment:_start];
+    
+    WS(weakSelf);
+    // 下拉刷新的回调
+    self.fragmentTableView.NewDataBlock = ^{
+        // 把内容数组中的所有数据移除
+        [weakSelf.fragmentTableView.dataArray removeAllObjects];
+        // 从0（最新的数据）开始
+        [weakSelf POSTHttpFragment:0];
+        
+    };
+    // 上拉加载的回调
+    self.fragmentTableView.MoreDataBlock = ^{
+        // 将已经自增10个数的start传到POST请求方法里去
+        [weakSelf POSTHttpFragment:weakSelf.start];
+    };
+
    
 
     // Do any additional setup after loading the view.
 }
+// 自适应TableView
+- (void)addAutoLayout {
+    WS(weakSelf);
+    [_fragmentTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.view.mas_top).offset(64);
+        make.left.equalTo(weakSelf.view.mas_left);
+        make.right.equalTo(weakSelf.view.mas_right);
+        make.bottom.equalTo(weakSelf.view.mas_bottom);
+    }];
+}
+
+- (void)POSTHttpFragment:(NSInteger)start {
+    NSString* start1 = [NSString stringWithFormat:@"%d",start];
+    // 创建请求参数
+    NSDictionary* dic = @{
+                          @"auth":	@"W8c8Fivl9flDCsJzH8HukzJxQMrm3N7KP9Wc5WTFjcWP229VKTBRU7vI",
+                          @"client":@"1",
+                          @"deviceid":@"A55AF7DB-88C8-408D-B983-D0B9C9CA0B36",
+                          @"limit":@"10",
+                          @"start":start1,
+                          @"version":@"3.0.6"
+                          };
+    // POST请求数据
+    [self POSTHttpRequest:@"http://api2.pianke.me/timeline/list" dic:dic successBalck:^(id JSON) {
+        NSDictionary* dic = JSON;
+        // 判断是否请求成功
+        if ([dic[@"result"] integerValue] == 1) {
+            NSDictionary* data = dic[@"data"];
+            NSArray* list = data[@"list"];
+
+            if(self.fragmentTableView.dataArray == nil) {
+                self.fragmentTableView.dataArray = [NSMutableArray array];
+            }
+            [_arr addObjectsFromArray:list];
+            // 将请求成功的数据属性赋值到tableView
+            [self.fragmentTableView.dataArray addObjectsFromArray:list];
+            // 刷新UI放到主线程里
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 刷新tableView
+                [self.fragmentTableView reloadData];
+            });
+            // start 自增10 为下拉加载数据做准备
+            _start += 10;
+            // 结束底部上拉加载动画
+            [self.fragmentTableView.mj_header endRefreshing];
+            // 结束顶部下拉刷新动画
+            [self.fragmentTableView.mj_footer endRefreshing];
+        }
+    } errorBlock:^(NSError *error) {
+        
+    }];
+}
+// 碎片TableView
+- (PKFragmentTableView *)fragmentTableView {
+    if (!_fragmentTableView) {
+        _fragmentTableView = [[PKFragmentTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStylePlain];
+        
+    }
+    return _fragmentTableView;
+}
+// 自定义导航栏左右按钮样式
 - (void)navigationBtn {
     // 自定义导航栏左边按钮样式
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,60 +167,6 @@
 - (void)leftAction:(id)sender {
     // 跳到抽屉
     [self presentLeftMenuViewController:nil];
-}
-// 自适应TableView
-- (void)addAutoLayout {
-    WS(weakSelf);
-    [_fragmentTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view.mas_top).offset(64);
-        make.left.equalTo(weakSelf.view.mas_left);
-        make.right.equalTo(weakSelf.view.mas_right);
-        make.bottom.equalTo(weakSelf.view.mas_bottom);
-    }];
-}
-
-- (void)POSTHttpFragment:(NSInteger)start {
-    NSString* start1 = [NSString stringWithFormat:@"%d",start];
-    // 创建请求参数
-    NSDictionary* dic = @{
-                          @"auth":	@"W8c8Fivl9flDCsJzH8HukzJxQMrm3N7KP9Wc5WTFjcWP229VKTBRU7vI",
-                          @"client":@"1",
-                          @"deviceid":@"A55AF7DB-88C8-408D-B983-D0B9C9CA0B36",
-                          @"limit":@"10",
-                          @"start":start1,
-                          @"version":@"3.0.6"
-                          };
-    // POST请求数据
-    [self POSTHttpRequest:@"http://api2.pianke.me/timeline/list" dic:dic successBalck:^(id JSON) {
-//        NSLog(@"%@",JSON);
-        NSDictionary* dic = JSON;
-        if ([dic[@"result"] integerValue] == 1) {
-        NSDictionary* data = dic[@"data"];
-        NSArray* list = data[@"list"];
-
-        if(_arr == nil) {
-            _arr = [NSMutableArray array];
-        }
-        [_arr addObjectsFromArray:list];
-        self.fragmentTableView.dataArray = self.arr;
-        // 刷新UI放到主线程里
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // 刷新tableView
-            [self.fragmentTableView reloadData];
-        });
-        
-        }
-    } errorBlock:^(NSError *error) {
-        
-    }];
-}
-// 碎片TableView
-- (PKFragmentTableView *)fragmentTableView {
-    if (!_fragmentTableView) {
-        _fragmentTableView = [[PKFragmentTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStylePlain];
-        
-    }
-    return _fragmentTableView;
 }
 
 
