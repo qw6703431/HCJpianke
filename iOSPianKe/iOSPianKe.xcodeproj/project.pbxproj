@@ -28,6 +28,7 @@
 		042C8FAF1C50B7B3007B4988 /* PKGoodProductsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FAE1C50B7B3007B4988 /* PKGoodProductsTableView.m */; };
 		042C8FB21C50B7E6007B4988 /* PKGoodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */; };
 		042C8FB61C51C83E007B4988 /* PKGoodProductsInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FB51C51C83E007B4988 /* PKGoodProductsInfoController.m */; };
+		04B70D1A1C521F3400667AB2 /* PKGoodProductsInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B70D191C521F3400667AB2 /* PKGoodProductsInfoHeadView.m */; };
 		04FC33881C477CF600DC42C4 /* PKLeftHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */; };
 		04FC338B1C479F4F00DC42C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FC338A1C479F4F00DC42C4 /* Assets.xcassets */; };
 		04FC338E1C47A11000DC42C4 /* PKLeftTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC338D1C47A11000DC42C4 /* PKLeftTableView.m */; };
@@ -188,6 +189,8 @@
 		042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsTableViewCell.m; path = "良品/view/PKGoodProductsTableViewCell.m"; sourceTree = "<group>"; };
 		042C8FB41C51C83E007B4988 /* PKGoodProductsInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsInfoController.h; path = "良品/良品详情/PKGoodProductsInfoController.h"; sourceTree = "<group>"; };
 		042C8FB51C51C83E007B4988 /* PKGoodProductsInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsInfoController.m; path = "良品/良品详情/PKGoodProductsInfoController.m"; sourceTree = "<group>"; };
+		04B70D181C521F3400667AB2 /* PKGoodProductsInfoHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsInfoHeadView.h; path = "良品/良品详情/view/PKGoodProductsInfoHeadView.h"; sourceTree = "<group>"; };
+		04B70D191C521F3400667AB2 /* PKGoodProductsInfoHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsInfoHeadView.m; path = "良品/良品详情/view/PKGoodProductsInfoHeadView.m"; sourceTree = "<group>"; };
 		04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04FC33861C477CF600DC42C4 /* PKLeftHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLeftHeadView.h; path = "左侧菜单/view/PKLeftHeadView.h"; sourceTree = "<group>"; };
 		04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLeftHeadView.m; path = "左侧菜单/view/PKLeftHeadView.m"; sourceTree = "<group>"; };
@@ -551,8 +554,18 @@
 			children = (
 				042C8FB41C51C83E007B4988 /* PKGoodProductsInfoController.h */,
 				042C8FB51C51C83E007B4988 /* PKGoodProductsInfoController.m */,
+				04B70D171C521ECD00667AB2 /* view */,
 			);
 			name = "良品详情";
+			sourceTree = "<group>";
+		};
+		04B70D171C521ECD00667AB2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04B70D181C521F3400667AB2 /* PKGoodProductsInfoHeadView.h */,
+				04B70D191C521F3400667AB2 /* PKGoodProductsInfoHeadView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		04FC337C1C47751600DC42C4 /* 左侧菜单 */ = {
@@ -1192,6 +1205,7 @@
 				60BB1ECE1C473685007D8F51 /* NSString+Helper.m in Sources */,
 				042C8F781C4E68B0007B4988 /* PKSettingViewController.m in Sources */,
 				042C8F9F1C4E6EAC007B4988 /* PKLeftTableViewBook.m in Sources */,
+				04B70D1A1C521F3400667AB2 /* PKGoodProductsInfoHeadView.m in Sources */,
 				042C8FAB1C4F7D0B007B4988 /* PKFragmentTableView.m in Sources */,
 				60BB1EB31C4733A9007D8F51 /* UIImageView+WebCache.m in Sources */,
 				60BB1EDE1C473A2F007D8F51 /* UIBarButtonItem+Helper.m in Sources */,

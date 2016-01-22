@@ -57,6 +57,7 @@
         [self registerClass:[PKFragmentTableViewCell class] forCellReuseIdentifier:@"cell"];
         // 关闭表格的分割线
         self.separatorStyle = NO;
+      
         self.backgroundColor = [UIColor whiteColor];
         //添加mj刷新
         [self addRefreshControl];
@@ -99,6 +100,8 @@
     static NSString* identifier = @"cell";
     
     PKFragmentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    // 关闭表格选中状态
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     // 新建字典接收数组的每个元素
     NSDictionary* dic = self.dataArray[indexPath.row];
     

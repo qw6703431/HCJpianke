@@ -35,6 +35,7 @@
         [self registerClass:[PKGoodProductsTableViewCell class] forCellReuseIdentifier:@"cell"];
         // 关闭表格的分割线
         self.separatorStyle = NO;
+
         self.backgroundColor = [UIColor whiteColor];
         //添加mj刷新
         [self addRefreshControl];
@@ -68,7 +69,9 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString* identifier = @"cell";
     PKGoodProductsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-
+    // 关闭表格的选中状态
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     NSDictionary* dic = self.dataArray[indexPath.row];
     [cell.contentImage downloadImage:dic[@"coverimg"]];
     cell.contentLabel.text = dic[@"title"];
