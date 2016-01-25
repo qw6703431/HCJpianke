@@ -20,4 +20,6 @@
 // 时间
 @property (strong, nonatomic) UILabel* timeLabel;
 
+@property (strong, nonatomic) NSDictionary* dic;
+
 @end

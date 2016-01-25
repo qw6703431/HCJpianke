@@ -31,6 +31,10 @@
         [self addSubview:self.fromLabel];
         [self addSubview:self.fromBtn];
         [self addSubview:self.MoreBtn];
+        [self addSubview:self.titleLabel];
+        [self addSubview:self.iconImage];
+        [self addSubview:self.nameLabel];
+        [self addSubview:self.timeLabel];
         
         [self addAutoLayout];
     }
@@ -55,6 +59,31 @@
         make.right.equalTo(weakSelf.mas_right).offset(-20);
         make.centerY.equalTo(weakSelf.fromLabel.mas_centerY);
         make.size.equalTo(CGSizeMake(65, 15));
+    }];
+    
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.fromBtn.mas_bottom).offset(20);
+        make.left.equalTo(weakSelf.fromLabel.mas_left);
+        make.size.equalTo(CGSizeMake(VIEW_WIDTH-40, 25));
+    }];
+    
+    [_iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.titleLabel.mas_bottom).offset(15);
+        make.left.equalTo(weakSelf.titleLabel.mas_left);
+        make.size.equalTo(CGSizeMake(50, 50));
+    }];
+    
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(weakSelf.iconImage.mas_centerY);
+        make.height.equalTo(15);
+        make.left.equalTo(weakSelf.iconImage.mas_right).offset(5);
+        make.right.equalTo(weakSelf.timeLabel.mas_left).offset(-5);
+    }];
+    
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.MoreBtn.mas_right);
+        make.centerY.equalTo(weakSelf.iconImage.mas_centerY);
+        make.size.equalTo(CGSizeMake(90, 15));
     }];
     
 }
@@ -93,6 +122,43 @@
     }
     return _MoreBtn;
 }
+
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+        _titleLabel.font = [UIFont systemFontOfSize:22.0];
+    }
+    return _titleLabel;
+}
+
+- (UIImageView *)iconImage {
+    if (!_iconImage) {
+        _iconImage = [[UIImageView alloc] init];
+        _iconImage.layer.cornerRadius = 25.0;
+        _iconImage.layer.masksToBounds = YES;
+    }
+    return _iconImage;
+}
+
+- (UILabel *)nameLabel {
+    if (!_nameLabel) {
+        _nameLabel = [[UILabel alloc] init];
+        _nameLabel.textAlignment = NSTextAlignmentLeft;
+        _nameLabel.font = [UIFont systemFontOfSize:13.0];
+    }
+    return _nameLabel;
+}
+
+- (UILabel *)timeLabel {
+    if (!_timeLabel) {
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.textAlignment = NSTextAlignmentRight;
+        _timeLabel.font = [UIFont systemFontOfSize:10.0];
+    }
+    return _timeLabel;
+}
+
 @end
 
 
