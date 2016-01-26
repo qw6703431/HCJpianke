@@ -7,12 +7,19 @@
 //
 
 #import "PKRadioViewController.h"
+#import "Masonry.h"
+
+#import "PKRadioTableView.h" // tableView
 
 @interface PKRadioViewController ()
 
 // nav左面的按钮和lebel
 @property (strong, nonatomic) UIButton* leftBtn;
 @property (strong, nonatomic) UILabel* leftLabel;
+
+@property (strong, nonatomic) PKRadioTableView* radioTableView;
+// 储存请求成功的参数，便于传值
+@property (strong, nonatomic) NSDictionary* dataDic;
 
 @end
 
@@ -22,10 +29,58 @@
     [super viewDidLoad];
    
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
     
+    [self.view addSubview:self.radioTableView];
+    
+    [self POSTHttpRadio];
     [self navigationBtn];
+    [self addAutoLayout];
     
     // Do any additional setup after loading the view.
+}
+
+- (void)POSTHttpRadio {
+    // 制作请求参数
+    NSDictionary* dic = @{@"auth":	@"W8c8Fivl9flDCsJzH8HukzJxQMrm3N7KP9Wc5WTFjcWP229VKTBRU7vI",
+                          @"client":@"1",
+                          @"deviceid":@"A55AF7DB-88C8-408D-B983-D0B9C9CA0B36",
+                          @"version":@"3.0.6"};
+    WS(weakSelf);
+    [self POSTHttpRequest:@"http://api2.pianke.me/ting/radio" dic:dic successBalck:^(id JSON) {
+//        NSLog(@"%@",JSON);
+        NSDictionary* jsonDic = JSON;
+        if ([jsonDic[@"result"] integerValue] == 1) {
+            if (weakSelf.dataDic == nil) {
+                weakSelf.dataDic = [[NSDictionary alloc] init];
+            }
+            
+            weakSelf.dataDic = jsonDic;
+            weakSelf.radioTableView.dataDic = weakSelf.dataDic[@"data"];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.radioTableView reloadData];
+            });
+        }
+        
+        
+    } errorBlock:^(NSError *error) {
+        
+    }];
+}
+
+- (void)addAutoLayout {
+    WS(weakSelf);
+    [_radioTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.view).with.insets(UIEdgeInsetsMake(64, 0, 0, 0));
+    }];
+}
+// 电台tableView
+- (PKRadioTableView *)radioTableView {
+    if (!_radioTableView) {
+        _radioTableView = [[PKRadioTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:(UITableViewStylePlain)];
+    }
+    return _radioTableView;
 }
 
 - (void)navigationBtn {

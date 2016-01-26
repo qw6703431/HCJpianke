@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401BE881C57035100819341 /* PKRadioTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401BE871C57035100819341 /* PKRadioTableView.m */; };
+		0401BE8B1C570AA200819341 /* PKRadioHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401BE8A1C570AA200819341 /* PKRadioHeadTableViewCell.m */; };
+		0401BE8E1C570AED00819341 /* PKRadioMiddleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401BE8D1C570AED00819341 /* PKRadioMiddleTableViewCell.m */; };
+		0401BE911C570B0500819341 /* PKRadioDownTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401BE901C570B0400819341 /* PKRadioDownTableViewCell.m */; };
 		042C8F571C4C82E8007B4988 /* PKLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F561C4C82E8007B4988 /* PKLoginView.m */; };
 		042C8F5A1C4C830E007B4988 /* PKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F591C4C830E007B4988 /* PKLoginViewController.m */; };
 		042C8F5D1C4CBBED007B4988 /* PKLoginHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8F5C1C4CBBED007B4988 /* PKLoginHeadView.m */; };
@@ -147,6 +151,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0401BE861C57035100819341 /* PKRadioTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioTableView.h; path = "电台/view/PKRadioTableView.h"; sourceTree = "<group>"; };
+		0401BE871C57035100819341 /* PKRadioTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioTableView.m; path = "电台/view/PKRadioTableView.m"; sourceTree = "<group>"; };
+		0401BE891C570AA200819341 /* PKRadioHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioHeadTableViewCell.h; path = "电台/view/PKRadioHeadTableViewCell.h"; sourceTree = "<group>"; };
+		0401BE8A1C570AA200819341 /* PKRadioHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioHeadTableViewCell.m; path = "电台/view/PKRadioHeadTableViewCell.m"; sourceTree = "<group>"; };
+		0401BE8C1C570AED00819341 /* PKRadioMiddleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioMiddleTableViewCell.h; path = "电台/view/PKRadioMiddleTableViewCell.h"; sourceTree = "<group>"; };
+		0401BE8D1C570AED00819341 /* PKRadioMiddleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioMiddleTableViewCell.m; path = "电台/view/PKRadioMiddleTableViewCell.m"; sourceTree = "<group>"; };
+		0401BE8F1C570B0400819341 /* PKRadioDownTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioDownTableViewCell.h; path = "电台/view/PKRadioDownTableViewCell.h"; sourceTree = "<group>"; };
+		0401BE901C570B0400819341 /* PKRadioDownTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioDownTableViewCell.m; path = "电台/view/PKRadioDownTableViewCell.m"; sourceTree = "<group>"; };
 		042C8F551C4C82E8007B4988 /* PKLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLoginView.h; path = "注册/view/PKLoginView.h"; sourceTree = "<group>"; };
 		042C8F561C4C82E8007B4988 /* PKLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLoginView.m; path = "注册/view/PKLoginView.m"; sourceTree = "<group>"; };
 		042C8F581C4C830E007B4988 /* PKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLoginViewController.h; path = "注册/PKLoginViewController.h"; sourceTree = "<group>"; };
@@ -422,6 +434,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401BE851C57031500819341 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0401BE861C57035100819341 /* PKRadioTableView.h */,
+				0401BE871C57035100819341 /* PKRadioTableView.m */,
+				0401BE891C570AA200819341 /* PKRadioHeadTableViewCell.h */,
+				0401BE8A1C570AA200819341 /* PKRadioHeadTableViewCell.m */,
+				0401BE8C1C570AED00819341 /* PKRadioMiddleTableViewCell.h */,
+				0401BE8D1C570AED00819341 /* PKRadioMiddleTableViewCell.m */,
+				0401BE8F1C570B0400819341 /* PKRadioDownTableViewCell.h */,
+				0401BE901C570B0400819341 /* PKRadioDownTableViewCell.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		042C8F501C4C821B007B4988 /* 注册 */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +540,7 @@
 			children = (
 				042C8F881C4E6DC8007B4988 /* PKRadioViewController.h */,
 				042C8F891C4E6DC8007B4988 /* PKRadioViewController.m */,
+				0401BE851C57031500819341 /* view */,
 			);
 			name = "电台";
 			sourceTree = "<group>";
@@ -1177,6 +1205,7 @@
 				60BB1EAB1C4733A9007D8F51 /* SDWebImageDownloaderOperation.m in Sources */,
 				04FC33911C47A3C300DC42C4 /* PKLeftTableViewCell.m in Sources */,
 				60BB1E901C4733A9007D8F51 /* MJRefreshAutoStateFooter.m in Sources */,
+				0401BE8B1C570AA200819341 /* PKRadioHeadTableViewCell.m in Sources */,
 				042C8F5D1C4CBBED007B4988 /* PKLoginHeadView.m in Sources */,
 				042C8F9C1C4E6E75007B4988 /* PKGoodView.m in Sources */,
 				60BB1EA61C4733A9007D8F51 /* NSData+ImageContentType.m in Sources */,
@@ -1198,6 +1227,7 @@
 				60BB1EDA1C4739A4007D8F51 /* ZJPNavigationController.m in Sources */,
 				60BB1E8D1C4733A9007D8F51 /* MJRefreshHeader.m in Sources */,
 				60BB1E6F1C4733A9007D8F51 /* AFHTTPRequestOperation.m in Sources */,
+				0401BE8E1C570AED00819341 /* PKRadioMiddleTableViewCell.m in Sources */,
 				60BB1E771C4733A9007D8F51 /* AFURLSessionManager.m in Sources */,
 				60BB1E761C4733A9007D8F51 /* AFURLResponseSerialization.m in Sources */,
 				60BB1E871C4733A9007D8F51 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1216,6 +1246,7 @@
 				60BB1EA51C4733A9007D8F51 /* MKAnnotationView+WebCache.m in Sources */,
 				60BB1E831C4733A9007D8F51 /* MASLayoutConstraint.m in Sources */,
 				60BB1E9E1C4733A9007D8F51 /* MJRefreshConst.m in Sources */,
+				0401BE911C570B0500819341 /* PKRadioDownTableViewCell.m in Sources */,
 				60BB1E921C4733A9007D8F51 /* MJRefreshBackNormalFooter.m in Sources */,
 				60BB1E711C4733A9007D8F51 /* AFHTTPSessionManager.m in Sources */,
 				042C8FB61C51C83E007B4988 /* PKGoodProductsInfoController.m in Sources */,
@@ -1258,6 +1289,7 @@
 				042C8F7B1C4E68CA007B4988 /* PKGoodProductsViewController.m in Sources */,
 				042C8F901C4E6E09007B4988 /* PKLeftMenuViewController.m in Sources */,
 				60BB1ED01C473685007D8F51 /* UIImage+Helper.m in Sources */,
+				0401BE881C57035100819341 /* PKRadioTableView.m in Sources */,
 				60BB1E951C4733A9007D8F51 /* MJRefreshNormalHeader.m in Sources */,
 				60BB1E8B1C4733A9007D8F51 /* MJRefreshComponent.m in Sources */,
 				60BB1E9C1C4733A9007D8F51 /* MJDIYHeader.m in Sources */,

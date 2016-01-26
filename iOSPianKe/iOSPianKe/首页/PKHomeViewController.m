@@ -56,7 +56,7 @@
     [_scrollView setShowsHorizontalScrollIndicator:NO];
     // 设置scollView内容视图的大小
     _scrollView.contentSize = CGSizeMake(VIEW_WIDTH*3, VIEW_HEIGHT-64);
-    // 
+    // 当前视图位置
     self.scrollView.contentOffset = CGPointMake(VIEW_WIDTH, 0);
     self.scrollView.delegate = self;
   
@@ -208,12 +208,12 @@
 }
 #pragma mark- 当scrollView滑动停止时所响应的代理事件
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    //
+    // 确定当前偏移位置
     NSInteger index = scrollView.contentOffset.x/VIEW_WIDTH;
     if (index == 0) {
-        //
+        // 设置当前位置btn高亮
         [self btnPress:self.btn1];
-        //
+        // 当前label显示内容
         self.leftLabel.text = @"碎片";
     } else if (index == 1) {
         [self btnPress:self.btn2];

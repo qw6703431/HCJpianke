@@ -104,7 +104,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     // 新建字典接收数组的每个元素
     NSDictionary* dic = self.dataArray[indexPath.row];
-    
     // 拿到字典里的userinfo的key 里面包括头像、id和昵称
     NSDictionary* nameDic = dic[@"userinfo"];
     

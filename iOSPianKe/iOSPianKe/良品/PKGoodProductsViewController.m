@@ -146,6 +146,7 @@
 - (PKGoodProductsTableView *)goodProductsTableView {
     if (!_goodProductsTableView) {
         _goodProductsTableView = [[PKGoodProductsTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:(UITableViewStylePlain)];
+        // 把控制器传给tableView tableView可以进行压栈退栈
         _goodProductsTableView.controller = self;
     }
     return _goodProductsTableView;
