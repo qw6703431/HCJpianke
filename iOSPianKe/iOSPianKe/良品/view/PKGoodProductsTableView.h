@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^loadNewDataBlock)();//加载新数据
-typedef void(^loadMoreDataBlock)();//加载更多数据
+typedef void(^loadNewDataBlock)(); // 加载新数据
+typedef void(^loadMoreDataBlock)(); // 加载更多数据
 
 @interface PKGoodProductsTableView : UITableView
 

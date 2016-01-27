@@ -13,12 +13,24 @@
 
 #import "UIImageView+SDWedImage.h" // 加载网络图片
 
+#import "MJRefresh.h" // MJ刷新公共类
+#import "MJChiBaoZiHeader.h" // 头部刷新
+#import "MJChiBaoZiFooter2.h" // 底部刷新
+
 
 @interface PKRadioTableView()<UITableViewDataSource,UITableViewDelegate>
+
 
 @end
 
 @implementation PKRadioTableView
+
+- (NSMutableArray *)countArray {
+    if (_countArray == nil) {
+        _countArray = [[NSMutableArray alloc] init];
+    }
+    return _countArray;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     self = [super initWithFrame:frame style:style];
@@ -33,19 +45,39 @@
         [self registerClass:[PKRadioMiddleTableViewCell class] forCellReuseIdentifier:@"secondCell"];
         [self registerClass:[PKRadioDownTableViewCell class] forCellReuseIdentifier:@"thirdCell"];
         
+        [self addRefreshControl];
     }
     return self;
+}
+#pragma mark- MJ刷新
+- (void)addRefreshControl {
+    // 设置回调(一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    MJChiBaoZiHeader* header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    // 隐藏时间
+    header.lastUpdatedTimeLabel.hidden = YES;
+    // 隐藏状态
+    header.stateLabel.hidden = YES;
+    // 马上进入刷新动画
+    self.mj_header = header;
+    // 设置上拉加载的动画
+    MJChiBaoZiFooter2* footer = [MJChiBaoZiFooter2 footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    footer.stateLabel.hidden = YES;
+    // 开启屏幕透明度
+    self.mj_footer.automaticallyChangeAlpha = YES;
+    self.mj_footer = footer;
 }
 
 #pragma mark- UITableView
 // 返回分区的总数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 3;
 }
 // 行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 2) {
-        return 9;
+        // 返回第三分区的长度
+        return self.countArray.count;
     }
     return 1;
 }
@@ -74,7 +106,7 @@
         [((PKRadioMiddleTableViewCell*)cell).imageView2 downloadImage:[arr[1] valueForKey:@"coverimg"]];
         [((PKRadioMiddleTableViewCell*)cell).imageView3 downloadImage:[arr[2] valueForKey:@"coverimg"]];
     } else {
-        NSArray* arr = self.dataDic[@"alllist"];
+        NSArray* arr = self.countArray;
         [((PKRadioDownTableViewCell*)cell).leftImageView downloadImage:[arr[indexPath.row] valueForKey:@"coverimg"]];
         ((PKRadioDownTableViewCell*)cell).titleLabel.text = [arr[indexPath.row] valueForKey:@"title"];
         ((PKRadioDownTableViewCell*)cell).nameLabel.text = [[arr[indexPath.row] valueForKey:@"userinfo"] valueForKey:@"uname"];
@@ -96,12 +128,12 @@
     
     return (VIEW_WIDTH-20)/2;
 }
-// 分区头
-- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+// 分区尾
+- (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView* headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, VIEW_WIDTH, 25)];
-    UILabel* lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, VIEW_WIDTH-5, 1)];
+    UILabel* lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 15, VIEW_WIDTH-5, 1)];
     lineLabel.backgroundColor = [UIColor lightGrayColor];
-    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 7, 100, 11)];
+    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 100, 11)];
     titleLabel.backgroundColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.font = [UIFont systemFontOfSize:10.0];
@@ -112,13 +144,33 @@
     [headView addSubview:titleLabel];
     return headView;
 }
-// 返回分区头的高度
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 2) {
-        return 25;
+// 返回分区尾高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return 25.0;
     }
     return 0.0;
 }
+// 下拉刷新
+- (void)loadMoreData {
+    if (_MoreDataBlock) {
+        _MoreDataBlock();
+    }
+}
+// 上拉加载
+- (void)loadNewData{
+    if (_NewDataBlock) {
+        _NewDataBlock();
+    }
+}
+// 分区头
+//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+//}
+// 返回分区头的高度
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+
+//}
 
 @end
 

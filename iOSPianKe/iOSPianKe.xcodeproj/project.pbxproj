@@ -541,6 +541,7 @@
 				042C8F881C4E6DC8007B4988 /* PKRadioViewController.h */,
 				042C8F891C4E6DC8007B4988 /* PKRadioViewController.m */,
 				0401BE851C57031500819341 /* view */,
+				04AE78211C586E4000AB9988 /* 电台详情 */,
 			);
 			name = "电台";
 			sourceTree = "<group>";
@@ -585,6 +586,13 @@
 				04B70D171C521ECD00667AB2 /* view */,
 			);
 			name = "良品详情";
+			sourceTree = "<group>";
+		};
+		04AE78211C586E4000AB9988 /* 电台详情 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "电台详情";
 			sourceTree = "<group>";
 		};
 		04B70D171C521ECD00667AB2 /* view */ = {

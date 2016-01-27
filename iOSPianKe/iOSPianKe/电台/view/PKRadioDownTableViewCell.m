@@ -20,6 +20,7 @@
         [self addSubview:self.byLabel];
         [self addSubview:self.nameLabel];
         [self addSubview:self.descLabel];
+        [self addSubview:self.countImageView];
         [self addSubview:self.countLabel];
         [self addSubview:self.lineLabel];
         
@@ -44,7 +45,7 @@
     
     [_byLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.leftImageView.mas_right).offset(5);
-        make.centerY.equalTo(weakSelf.leftImageView.mas_centerY).offset(4);
+        make.centerY.equalTo(weakSelf.leftImageView.mas_centerY).offset(3);
         make.size.equalTo(CGSizeMake(15, 11));
     }];
     
@@ -61,6 +62,12 @@
         make.height.equalTo(11);
     }];
     
+    [_countImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.countLabel.mas_left);
+        make.centerY.equalTo(weakSelf.countLabel.mas_centerY);
+        make.size.equalTo(CGSizeMake(8, 13));
+    }];
+    
     [_countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(weakSelf.mas_right).offset(-7);
         make.centerY.equalTo(weakSelf.titleLabel.mas_centerY);
@@ -69,7 +76,7 @@
     
     [_lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.mas_left).offset(5);
-        make.right.equalTo(weakSelf.mas_right).offset(-5);
+        make.right.equalTo(weakSelf.mas_right);
         make.bottom.equalTo(weakSelf.mas_bottom);
         make.height.equalTo(1);
     }];
@@ -98,6 +105,7 @@
         _byLabel.textAlignment = NSTextAlignmentLeft;
         _byLabel.font = [UIFont systemFontOfSize:10.0];
         _byLabel.text = @"by:";
+        _byLabel.textColor = RGB(63, 110, 116);
     }
     return _byLabel;
 }
@@ -107,6 +115,7 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textAlignment = NSTextAlignmentLeft;
         _nameLabel.font = [UIFont systemFontOfSize:10.0];
+        _nameLabel.textColor = RGB(63, 110, 116);
     }
     return _nameLabel;
 }
@@ -119,6 +128,14 @@
         _descLabel.textColor = [UIColor grayColor];
     }
     return _descLabel;
+}
+
+- (UIImageView *)countImageView {
+    if (!_countImageView) {
+        _countImageView = [[UIImageView alloc] init];
+        _countImageView.image = [UIImage imageNamed:@"收听量"];
+    }
+    return _countImageView;
 }
 
 - (UILabel *)countLabel {

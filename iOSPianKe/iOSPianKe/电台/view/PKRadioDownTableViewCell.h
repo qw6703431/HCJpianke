@@ -20,6 +20,8 @@
 @property (strong, nonatomic) UILabel* nameLabel;
 // 名字下详情
 @property (strong, nonatomic) UILabel* descLabel;
+// 收听量前面的image
+@property (strong, nonatomic) UIImageView* countImageView;
 // 收听量
 @property (strong, nonatomic) UILabel* countLabel;
 // 线

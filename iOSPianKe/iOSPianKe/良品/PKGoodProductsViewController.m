@@ -97,11 +97,11 @@
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [weakSelf.goodProductsTableView reloadData];
                      });
-                     // start 自增10 为下拉加载数据做准备
+                     // start 自增10 为上拉加载数据做准备
                      _start += 10;
-                     // 结束底部上拉加载动画
-                     [self.goodProductsTableView.mj_header endRefreshing];
                      // 结束顶部下拉刷新动画
+                     [self.goodProductsTableView.mj_header endRefreshing];
+                     // 结束底部上拉加载动画
                      [self.goodProductsTableView.mj_footer endRefreshing];
                  }
                  
