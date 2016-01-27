@@ -15,9 +15,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        [self addSubview:self.imageView1];
-        [self addSubview:self.imageView2];
-        [self addSubview:self.imageView3];
+        [self addSubview:self.btn1];
+        [self addSubview:self.btn2];
+        [self addSubview:self.btn3];
         
         [self addAutoLayout];
     }
@@ -26,52 +26,52 @@
 
 - (void)addAutoLayout {
     WS(weakSelf);
-    [_imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.mas_top).offset(5);
         make.bottom.equalTo(weakSelf.mas_bottom).offset(-5);
         make.left.equalTo(weakSelf.mas_left).offset(5);
 //        make.height.equalTo(weakSelf.imageView1.mas_width);
-        make.width.equalTo(weakSelf.imageView2.mas_width);
+        make.width.equalTo(weakSelf.btn2.mas_width);
     }];
     
-    [_imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.mas_top).offset(5);
         make.bottom.equalTo(weakSelf.mas_bottom).offset(-5);
-        make.left.equalTo(weakSelf.imageView1.mas_right).offset(3);
+        make.left.equalTo(weakSelf.btn1.mas_right).offset(3);
 //        make.height.equalTo(weakSelf.imageView2.mas_width);
-        make.width.equalTo(weakSelf.imageView3.mas_width);
+        make.width.equalTo(weakSelf.btn3.mas_width);
     }];
     
-    [_imageView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.mas_top).offset(5);
         make.bottom.equalTo(weakSelf.mas_bottom).offset(-5);
-        make.left.equalTo(weakSelf.imageView2.mas_right).offset(3);
+        make.left.equalTo(weakSelf.btn2.mas_right).offset(3);
         make.right.equalTo(weakSelf.mas_right).offset(-5);
 //        make.height.equalTo(weakSelf.imageView3.mas_width);
-        make.width.equalTo(weakSelf.imageView1.mas_width);
+        make.width.equalTo(weakSelf.btn1.mas_width);
     }];
     
 }
 
-- (UIImageView *)imageView1 {
-    if (!_imageView1) {
-        _imageView1 = [[UIImageView alloc] init];
+- (UIButton *)btn1 {
+    if (!_btn1) {
+        _btn1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     }
-    return _imageView1;
+    return _btn1;
 }
 
-- (UIImageView *)imageView2 {
-    if (!_imageView2) {
-        _imageView2 = [[UIImageView alloc] init];
+- (UIButton *)btn2 {
+    if (!_btn2) {
+        _btn2 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     }
-    return _imageView2;
+    return _btn2;
 }
 
-- (UIImageView *)imageView3 {
-    if (!_imageView3) {
-        _imageView3 = [[UIImageView alloc] init];
+- (UIButton *)btn3 {
+    if (!_btn3) {
+        _btn3 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     }
-    return _imageView3;
+    return _btn3;
 }
 
 - (void)awakeFromNib {

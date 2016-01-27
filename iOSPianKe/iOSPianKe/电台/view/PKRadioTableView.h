@@ -18,6 +18,8 @@ typedef void (^loadMoreDataBlock)(); // 加载更多数据
 // 保存第三分区数据的数组
 @property (strong, nonatomic) NSMutableArray* countArray;
 
+@property (strong, nonatomic) UIViewController* controller;
+
 @property (copy, nonatomic) loadNewDataBlock NewDataBlock;
 @property (copy, nonatomic) loadMoreDataBlock MoreDataBlock;
 

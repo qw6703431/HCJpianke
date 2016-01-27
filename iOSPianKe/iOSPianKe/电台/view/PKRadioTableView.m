@@ -12,10 +12,13 @@
 #import "PKRadioDownTableViewCell.h" // 第三分区
 
 #import "UIImageView+SDWedImage.h" // 加载网络图片
+#import "UIButton+WebCache.h" // 加载btn上的网络图片
 
 #import "MJRefresh.h" // MJ刷新公共类
 #import "MJChiBaoZiHeader.h" // 头部刷新
 #import "MJChiBaoZiFooter2.h" // 底部刷新
+
+#import "PKRadioInfoController.h" // 电台详情
 
 
 @interface PKRadioTableView()<UITableViewDataSource,UITableViewDelegate>
@@ -102,9 +105,20 @@
         [((PKRadioHeadTableViewCell*)cell).imageView3 downloadImage:[arr[2] valueForKey:@"img"]];
     } else if (indexPath.section == 1) {
         NSArray* arr = self.dataDic[@"hotlist"];
-        [((PKRadioMiddleTableViewCell*)cell).imageView1 downloadImage:[arr[0] valueForKey:@"coverimg"]];
-        [((PKRadioMiddleTableViewCell*)cell).imageView2 downloadImage:[arr[1] valueForKey:@"coverimg"]];
-        [((PKRadioMiddleTableViewCell*)cell).imageView3 downloadImage:[arr[2] valueForKey:@"coverimg"]];
+        
+        NSString *dtrrty1= [arr[0] valueForKey:@"coverimg"];
+        NSURL* url1 = [NSURL URLWithString:dtrrty1];
+        // 加载btn上的网络图片所用的方法（URL）
+        [((PKRadioMiddleTableViewCell*)cell).btn1 sd_setImageWithURL:url1 forState:(UIControlStateNormal)];
+        
+        NSString *dtrrty2= [arr[1] valueForKey:@"coverimg"];
+        NSURL* url2 = [NSURL URLWithString:dtrrty2];
+        [((PKRadioMiddleTableViewCell*)cell).btn2 sd_setImageWithURL:url2 forState:(UIControlStateNormal)];
+        
+        NSString *dtrrty3= [arr[2] valueForKey:@"coverimg"];
+        NSURL* url3 = [NSURL URLWithString:dtrrty3];
+        [((PKRadioMiddleTableViewCell*)cell).btn3 sd_setImageWithURL:url3 forState:(UIControlStateNormal)];
+       
     } else {
         NSArray* arr = self.countArray;
         [((PKRadioDownTableViewCell*)cell).leftImageView downloadImage:[arr[indexPath.row] valueForKey:@"coverimg"]];
@@ -150,6 +164,16 @@
         return 25.0;
     }
     return 0.0;
+}
+// 获取用户当前点击的行数
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        PKRadioInfoController* info = [[PKRadioInfoController alloc] init];
+        // 将当前行的标示（id）传过去
+        info.contentID = [self.countArray[indexPath.row] valueForKey:@"radioid"];
+        // 压栈
+        [_controller.navigationController pushViewController:info animated:YES];
+    }
 }
 // 下拉刷新
 - (void)loadMoreData {

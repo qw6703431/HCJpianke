@@ -10,8 +10,8 @@
 
 @interface PKRadioMiddleTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) UIImageView* imageView1;
-@property (strong, nonatomic) UIImageView* imageView2;
-@property (strong, nonatomic) UIImageView* imageView3;
+@property (strong, nonatomic) UIButton* btn1;
+@property (strong, nonatomic) UIButton* btn2;
+@property (strong, nonatomic) UIButton* btn3;
 
 @end

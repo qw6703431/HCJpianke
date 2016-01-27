@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) UIScrollView* scrollView;
 
+@property (strong, nonatomic) UIPageControl* pageCoutrol;
+
 @end
 
 @implementation PKRadioHeadTableViewCell
@@ -27,6 +29,7 @@
         [self.scrollView addSubview:self.imageView2];
         [self.scrollView addSubview:self.imageView3];
         [self addSubview:self.scrollView];
+        [self addSubview:self.pageCoutrol];
         
         [self addAutoLaout];
     }
@@ -37,6 +40,12 @@
     WS(weakSelf);
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    [_pageCoutrol mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.mas_right).offset(-10);
+        make.bottom.equalTo(weakSelf.mas_bottom).offset(-10);
+        make.size.equalTo(CGSizeMake(60, 20));
     }];
     
     [_imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,14 +88,40 @@
         // 当前视图位置
 //        self.scrollView.contentOffset = CGPointMake(0, 0);
         self.scrollView.delegate = self;
+        
     }
     return _scrollView;
+}
+
+- (UIPageControl *)pageCoutrol {
+    if (!_pageCoutrol) {
+        _pageCoutrol = [[UIPageControl alloc] init];
+        // 设置圆点个数
+        [_pageCoutrol setNumberOfPages:3];
+        // 设置透明度
+        //    [pageControl setAlpha:0.3];
+        // 关闭用户交互
+        _pageCoutrol.userInteractionEnabled = NO;
+        
+        // 设置当前圆钮亮起的位置
+        _pageCoutrol.currentPage = 0;
+    }
+    return _pageCoutrol;
+}
+#pragma mark- UIScrollViewDelegate
+// 实现UIScrollView的 滚动方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 获取滚动的x方向的偏移值
+    CGFloat offsetX = scrollView.contentOffset.x;
+    // 用x方向的偏移的值除以一张图片的宽度，取商就是当前滚动到了第几页
+    NSInteger page = offsetX/_scrollView.frame.size.width;
+    // 将页码设置给UIPageControl
+    _pageCoutrol.currentPage = page;
 }
 
 - (UIImageView *)imageView1 {
     if (!_imageView1) {
         _imageView1 = [[UIImageView alloc] init];
-        _imageView1.backgroundColor = [UIColor redColor];
     }
     return _imageView1;
 }

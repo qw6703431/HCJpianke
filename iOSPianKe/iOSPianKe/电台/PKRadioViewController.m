@@ -138,6 +138,7 @@
 - (PKRadioTableView *)radioTableView {
     if (!_radioTableView) {
         _radioTableView = [[PKRadioTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:(UITableViewStylePlain)];
+        _radioTableView.controller = self;
     }
     return _radioTableView;
 }

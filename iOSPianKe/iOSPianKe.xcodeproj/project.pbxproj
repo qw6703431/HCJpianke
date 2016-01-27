@@ -32,6 +32,10 @@
 		042C8FAF1C50B7B3007B4988 /* PKGoodProductsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FAE1C50B7B3007B4988 /* PKGoodProductsTableView.m */; };
 		042C8FB21C50B7E6007B4988 /* PKGoodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */; };
 		042C8FB61C51C83E007B4988 /* PKGoodProductsInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C8FB51C51C83E007B4988 /* PKGoodProductsInfoController.m */; };
+		04AE78241C589BC200AB9988 /* PKRadioInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE78231C589BC200AB9988 /* PKRadioInfoController.m */; };
+		04AE782B1C58C36F00AB9988 /* PKRadioInfoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE782A1C58C36F00AB9988 /* PKRadioInfoTableView.m */; };
+		04AE782E1C58C93D00AB9988 /* PKRadioInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE782D1C58C93D00AB9988 /* PKRadioInfoTableViewCell.m */; };
+		04AE78311C58CA9500AB9988 /* PkRadioInfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE78301C58CA9500AB9988 /* PkRadioInfoHeaderView.m */; };
 		04B70D1A1C521F3400667AB2 /* PKGoodProductsInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B70D191C521F3400667AB2 /* PKGoodProductsInfoHeadView.m */; };
 		04FC33881C477CF600DC42C4 /* PKLeftHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC33871C477CF600DC42C4 /* PKLeftHeadView.m */; };
 		04FC338B1C479F4F00DC42C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FC338A1C479F4F00DC42C4 /* Assets.xcassets */; };
@@ -201,6 +205,14 @@
 		042C8FB11C50B7E6007B4988 /* PKGoodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsTableViewCell.m; path = "良品/view/PKGoodProductsTableViewCell.m"; sourceTree = "<group>"; };
 		042C8FB41C51C83E007B4988 /* PKGoodProductsInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsInfoController.h; path = "良品/良品详情/PKGoodProductsInfoController.h"; sourceTree = "<group>"; };
 		042C8FB51C51C83E007B4988 /* PKGoodProductsInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsInfoController.m; path = "良品/良品详情/PKGoodProductsInfoController.m"; sourceTree = "<group>"; };
+		04AE78221C589BC200AB9988 /* PKRadioInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioInfoController.h; path = "电台/电台详情/PKRadioInfoController.h"; sourceTree = "<group>"; };
+		04AE78231C589BC200AB9988 /* PKRadioInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioInfoController.m; path = "电台/电台详情/PKRadioInfoController.m"; sourceTree = "<group>"; };
+		04AE78291C58C36F00AB9988 /* PKRadioInfoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioInfoTableView.h; path = "电台/电台详情/view/PKRadioInfoTableView.h"; sourceTree = "<group>"; };
+		04AE782A1C58C36F00AB9988 /* PKRadioInfoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioInfoTableView.m; path = "电台/电台详情/view/PKRadioInfoTableView.m"; sourceTree = "<group>"; };
+		04AE782C1C58C93D00AB9988 /* PKRadioInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRadioInfoTableViewCell.h; path = "电台/电台详情/view/PKRadioInfoTableViewCell.h"; sourceTree = "<group>"; };
+		04AE782D1C58C93D00AB9988 /* PKRadioInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRadioInfoTableViewCell.m; path = "电台/电台详情/view/PKRadioInfoTableViewCell.m"; sourceTree = "<group>"; };
+		04AE782F1C58CA9500AB9988 /* PkRadioInfoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PkRadioInfoHeaderView.h; path = "电台/电台详情/view/PkRadioInfoHeaderView.h"; sourceTree = "<group>"; };
+		04AE78301C58CA9500AB9988 /* PkRadioInfoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PkRadioInfoHeaderView.m; path = "电台/电台详情/view/PkRadioInfoHeaderView.m"; sourceTree = "<group>"; };
 		04B70D181C521F3400667AB2 /* PKGoodProductsInfoHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKGoodProductsInfoHeadView.h; path = "良品/良品详情/view/PKGoodProductsInfoHeadView.h"; sourceTree = "<group>"; };
 		04B70D191C521F3400667AB2 /* PKGoodProductsInfoHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKGoodProductsInfoHeadView.m; path = "良品/良品详情/view/PKGoodProductsInfoHeadView.m"; sourceTree = "<group>"; };
 		04FC337B1C4746E200DC42C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -591,8 +603,24 @@
 		04AE78211C586E4000AB9988 /* 电台详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04AE78221C589BC200AB9988 /* PKRadioInfoController.h */,
+				04AE78231C589BC200AB9988 /* PKRadioInfoController.m */,
+				04AE78281C58C34400AB9988 /* view */,
 			);
 			name = "电台详情";
+			sourceTree = "<group>";
+		};
+		04AE78281C58C34400AB9988 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04AE78291C58C36F00AB9988 /* PKRadioInfoTableView.h */,
+				04AE782A1C58C36F00AB9988 /* PKRadioInfoTableView.m */,
+				04AE782F1C58CA9500AB9988 /* PkRadioInfoHeaderView.h */,
+				04AE78301C58CA9500AB9988 /* PkRadioInfoHeaderView.m */,
+				04AE782C1C58C93D00AB9988 /* PKRadioInfoTableViewCell.h */,
+				04AE782D1C58C93D00AB9988 /* PKRadioInfoTableViewCell.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		04B70D171C521ECD00667AB2 /* view */ = {
@@ -1203,6 +1231,7 @@
 				60BB1E8C1C4733A9007D8F51 /* MJRefreshFooter.m in Sources */,
 				04FC338E1C47A11000DC42C4 /* PKLeftTableView.m in Sources */,
 				60BB1E9A1C4733A9007D8F51 /* MJDIYAutoFooter.m in Sources */,
+				04AE78311C58CA9500AB9988 /* PkRadioInfoHeaderView.m in Sources */,
 				60BB1E741C4733A9007D8F51 /* AFURLConnectionOperation.m in Sources */,
 				60BB1E861C4733A9007D8F51 /* NSArray+MASAdditions.m in Sources */,
 				04FC33A61C48D0CE00DC42C4 /* PKThirdLandingView.m in Sources */,
@@ -1234,6 +1263,7 @@
 				60BB1EB41C4733A9007D8F51 /* UIView+WebCacheOperation.m in Sources */,
 				60BB1EDA1C4739A4007D8F51 /* ZJPNavigationController.m in Sources */,
 				60BB1E8D1C4733A9007D8F51 /* MJRefreshHeader.m in Sources */,
+				04AE782B1C58C36F00AB9988 /* PKRadioInfoTableView.m in Sources */,
 				60BB1E6F1C4733A9007D8F51 /* AFHTTPRequestOperation.m in Sources */,
 				0401BE8E1C570AED00819341 /* PKRadioMiddleTableViewCell.m in Sources */,
 				60BB1E771C4733A9007D8F51 /* AFURLSessionManager.m in Sources */,
@@ -1248,6 +1278,7 @@
 				60BB1EB31C4733A9007D8F51 /* UIImageView+WebCache.m in Sources */,
 				60BB1EDE1C473A2F007D8F51 /* UIBarButtonItem+Helper.m in Sources */,
 				60BB1D991C473118007D8F51 /* AppDelegate.m in Sources */,
+				04AE78241C589BC200AB9988 /* PKRadioInfoController.m in Sources */,
 				60BB1E7D1C4733A9007D8F51 /* UIProgressView+AFNetworking.m in Sources */,
 				60BB1EDB1C4739A4007D8F51 /* UINavigationItem+BackItem.m in Sources */,
 				60BB1EA81C4733A9007D8F51 /* SDWebImageCompat.m in Sources */,
@@ -1280,6 +1311,7 @@
 				042C8FA61C4F6163007B4988 /* PKFragmentTableViewCell.m in Sources */,
 				60BB1E7C1C4733A9007D8F51 /* UIImageView+AFNetworking.m in Sources */,
 				60BB1E7B1C4733A9007D8F51 /* UIButton+AFNetworking.m in Sources */,
+				04AE782E1C58C93D00AB9988 /* PKRadioInfoTableViewCell.m in Sources */,
 				60BB1E7E1C4733A9007D8F51 /* UIRefreshControl+AFNetworking.m in Sources */,
 				60BB1E7F1C4733A9007D8F51 /* UIWebView+AFNetworking.m in Sources */,
 				042C8FAF1C50B7B3007B4988 /* PKGoodProductsTableView.m in Sources */,
