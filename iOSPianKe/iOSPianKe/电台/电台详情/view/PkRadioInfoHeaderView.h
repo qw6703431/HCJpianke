@@ -21,5 +21,7 @@
 @property (strong, nonatomic) UILabel* countLabel;
 // title
 @property (strong, nonatomic) UILabel* titleLabel;
+// 底部线
+@property (strong, nonatomic) UILabel* lineLabel;
 
 @end
