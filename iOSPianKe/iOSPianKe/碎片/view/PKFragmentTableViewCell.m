@@ -56,13 +56,13 @@
     
     
     [_bigImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(weakSelf.mas_left).offset(20);
+        make.left.equalTo(weakSelf.mas_left).offset(10);
         make.right.equalTo(weakSelf.mas_right).offset(-20);
         make.top.equalTo(weakSelf.iconImage.mas_bottom).offset(10);
     }];
 
     [_newsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.bigImage.mas_bottom).offset(20);
+        make.top.equalTo(weakSelf.bigImage.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.mas_left).offset(20);
         make.right.equalTo(weakSelf.mas_right).offset(-20);
         make.bottom.equalTo(weakSelf.likeLabel.mas_top).offset(-20);

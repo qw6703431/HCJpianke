@@ -10,6 +10,7 @@
 #import "PKFragmentTableViewCell.h" // 自定义cell（碎片）
 
 #import "UIImageView+SDWedImage.h" // 加载网络图片
+#import "NSString+Helper.h" // NSString扩展
 
 #import "MJRefresh.h" // MJ刷新公共类
 #import "MJChiBaoZiHeader.h" // 头部刷新
@@ -21,16 +22,33 @@
 
 @property (strong, nonatomic) NSMutableArray* imageHeArray;
 
+@property (strong, nonatomic) NSMutableArray* labelHeArray;
+
 @end
 
 @implementation PKFragmentTableView
+
+- (NSMutableArray *)labelHeArray {
+    if (_labelHeArray == nil) {
+        _labelHeArray = [[NSMutableArray alloc] init];
+        for (NSDictionary* dic in self.dataArray) {
+            // 调用NSString扩展类别NSString+Helper.h的方法
+            // 该方法是计算label的高度
+            CGFloat labelHe = [NSString autoHeightWithString:dic[@"content"] Width:VIEW_HEIGHT-50 Font:[UIFont systemFontOfSize:17.0]];
+            NSString* str = [NSString stringWithFormat:@"%f",labelHe];
+            [_labelHeArray addObject:str];
+        }
+    }
+    return _labelHeArray;
+}
 
 - (NSMutableArray *)imageHeArray {
     if (_imageHeArray == nil) {
         _imageHeArray = [[NSMutableArray alloc] init];
         NSMutableArray* muArray = [[NSMutableArray alloc] init];
         for (NSInteger i=0; i<self.imageSizeArray.count; i++) {
-            CGFloat imageH = 0.0;
+            // 如果没有图片将默认高度定位负值
+            CGFloat imageH = -10.0;
             // 判断是否为空
             if (![self.imageSizeArray[i] isEmptyString]) {
                 NSString *ImageSize = self.imageSizeArray[i];
@@ -102,6 +120,7 @@
     PKFragmentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     // 关闭表格选中状态
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     // 新建字典接收数组的每个元素
     NSDictionary* dic = self.dataArray[indexPath.row];
     // 拿到字典里的userinfo的key 里面包括头像、id和昵称
@@ -141,10 +160,12 @@
         }
         // 将图片高度的数组置为空，否则不会执行懒加载
         self.imageHeArray = nil;
+        self.labelHeArray = nil;
     }
    
-    CGFloat cellH = [self.imageHeArray[indexPath.row] floatValue];
-    return 150+cellH;
+    CGFloat imageH = [self.imageHeArray[indexPath.row] floatValue];
+    CGFloat labelH = [self.labelHeArray[indexPath.row] floatValue];
+    return 135+imageH+labelH;
 }
 //下拉刷新全部数据
 - (void)loadMoreData{

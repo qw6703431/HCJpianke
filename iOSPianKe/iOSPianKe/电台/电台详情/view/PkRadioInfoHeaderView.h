@@ -10,6 +10,16 @@
 
 @interface PkRadioInfoHeaderView : UIView
 // 头部imageView
-@property (strong, nonatomic) UIImageView* headImageView;
+@property (strong, nonatomic) UIImageView* headImage;
+// 头像
+@property (strong, nonatomic) UIImageView* iconImage;
+// 昵称
+@property (strong, nonatomic) UILabel* nameLabel;
+// 收听量image
+@property (strong, nonatomic) UIImageView* countImage;
+// 收听量label
+@property (strong, nonatomic) UILabel* countLabel;
+// title
+@property (strong, nonatomic) UILabel* titleLabel;
 
 @end

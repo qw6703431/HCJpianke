@@ -30,7 +30,5 @@
 @property (strong, nonatomic) UILabel* likeLabel;
 // 底部线label
 @property (strong, nonatomic) UILabel* lineLabel;
-//// 图片高度
-//@property (assign, nonatomic) CGFloat imageHeight;
 
 @end
